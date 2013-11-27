@@ -1,10 +1,11 @@
 <%-- 
-    Document   : index
-    Created on : Nov 19, 2013, 11:59:23 AM
-    Author     : Student_User
+    Document   : test
+    Created on : Nov 27, 2013, 11:18:43 AM
+    Author     : Rissy
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,79 +14,42 @@
         <title>Tech Trinkets</title>
     </head>
     <body>
-        <table class="bigtable">
-            <tr class="topnav">
-                <td colspan="2">
-                    Welcome, Guest - Sign In - Register - View Cart
-                    <hr />
-                </td>
-            </tr>
-            <tr class="logosearch">
-                <td>
-                    <img src="images/techtrinkets.png" id="logo" />
-                </td>
-                <td>
-                    <form>
-                        <input type="text" id="search" />&nbsp;
-                        <input type="submit" value="Search!" id="searchbutton" />
-                    </form>
-                    <!--<img src="images/search_box.jpg" id="search" /> -->
-                </td>
-            </tr>
-            <tr class="body">
-                <td><br /><br />Browse By Type:
-                    <ul>
-                        <li>Tshirts</li>
-                        <li>Appliances</li>
-                        <li>Home & Office</li>
-                        <li>Toys</li>
-                        <li>Clearance</li>
-                        <li>All Products</li>
-                    </ul>
-                </td>
-                <td>
-                    <table class="itemtable">
-                        <tr>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                            <td>
-                                <img src="images/ImageSoon.jpg" /> <br /> Description
-                            </td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr class="footer">
-                <td colspan="2">
-                    Copyright 2013 Tech Trinkets, Inc. All Rights Reserved. User Agreement and Privacy Policy.
-                </td>
-            </tr>
-        </table>
+
+        <div id="container">
+
+            <div id="header">
+                Welcome, Guest - <a href="login.jsp">Sign In</a> - <a href="register.jsp">Register</a> - Shopping Cart (0) <hr />
+            </div>
+            <div id="logodiv">
+                <a href="#home">
+                    <img src="images/techtrinkets.png" id="logo" alt="Tech Trinkets" />
+                </a>
+            </div>
+            <div id="search"> <br /><br />
+                <form>
+                    <input type="text" id="searchform" />&nbsp;
+                    <input type="submit" value="Search!" id="searchbutton" alt="Search!" />
+                </form>
+            </div>
+            <div id="menu">
+                Browse By Type:
+                <ul>
+                    <li><a href="#tshirts">T-Shirts</a></li>
+                    <li><a href="#Appliances">Appliances</a></li>
+                    <li><a href="#homeoffice">Home & Office</a></li>
+                    <li><a href="#toys">Toys</a></li>
+                    <li><a href="#clearance">Clearance</a></li>
+                    <li><a href="#allproducts">All Products</a></li>
+                </ul>
+            </div>
+
+            <div id="content">
+                Featured item:</div>
+
+            <div id="footer">
+                Copyright 2013 Tech Trinkets, Inc. All Rights Reserved. User Agreement and Privacy Policy.</div>
+
+        </div>
+
     </body>
 </html>

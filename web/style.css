@@ -1,58 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
 /* 
-    Document   : style
-    Created on : Nov 19, 2013, 12:13:04 PM
-    Author     : Student_User
-    Description:
-        Purpose of the stylesheet follows.
+    Created on : Nov 27, 2013, 11:19:38 AM
+    Author     : Rissy
 */
 
-root { 
-    display: block;
-}
-
 html {
-    font-family: 'Arial';
+    font-family: "Arial";
 }
 
-.bigtable {
-    width: 800px;
-    height: auto;
-}
-
-table, td, tr {
-   /* border: 1px solid black; */
-}
-
-.itemtable {
-    width:620px;
-    text-align: center;
-    padding: 10px;
-}
-
-.body {
-    padding-left: 15px;
-}
-
-.topnav {
-    height:50px;
-    text-align: right;
-}
-.logosearch {
-    height:90px;
-    text-align: center;
-}
-
-img {
-    height:100px;
-    border: 1px solid black;
+#container {
+    background-color: #FFFFFF;
+    width:1000px;
+    position: relative;
 }
 
 #logo {
-    height:75px;
-    border: none;
+    height:70px;
+}
+
+#logodiv {
+    background-color:#FFFFFF;
+    width:150px;
+    padding: 30px;
+    float:left;
 }
 
 #search {
+    background-color:#FFFFFF;
+    padding: 20px;
+    width:750px;
+    height:94px;
+    float:left;
+    text-align: center;
+    vertical-align:middle;
+}
+
+#searchform {
     height:22px;
     width:300px;
     font: 16px 'Arial';
@@ -62,15 +49,34 @@ img {
     height: 30px;
 }
 
-
-.body {
-    height:400px;
-    text-align: left;
-    vertical-align: top;
+#header {
+    margin-bottom:0;
+    background-color:#FFFFFF;
+    text-align: right;
+    font: 14px "Arial";
 }
 
-.footer {
-    height:100px;
-    font-size: 12px;
-    text-align: center;
+#menu {
+    background-color:#FFFFFF;
+    height:300px;
+    width:150px;
+    padding: 30px;
+    float:left;
+}
+
+#content {
+    background-color:#FFFFFF;
+    height:300px;
+    width:750px;
+    padding: 20px;
+    float:left;
+
+}
+
+#footer {
+    background-color:#FFFFFF;
+    height: 50px;
+    clear:both;
+    text-align:center;
+    font: 12px "Arial";
 }
