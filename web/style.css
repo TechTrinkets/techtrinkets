@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 html {
-    font-family: "Arial";
+    font-family: "Helvetica";
 }
 
 #container {
@@ -66,11 +66,11 @@ html {
 
 #content {
     background-color:#FFFFFF;
-    height:300px;
-    width:750px;
+    height:500px;
+    width:700px;
     padding: 20px;
     float:left;
-
+    margin-left: 30px;
 }
 
 #footer {
