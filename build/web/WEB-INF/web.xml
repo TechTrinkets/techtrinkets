@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	 version="3.0">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    
+    <description>Tech Trinkets</description>
+  <display-name>Tech Trinkets</display-name>
+
+  <servlet>
+    <servlet-name>ShoppingControl</servlet-name>
+    <servlet-class>control.ShoppingControl</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingControl</servlet-name>
+    <url-pattern>/controller</url-pattern>
+  </servlet-mapping>
+  
+  <env-entry-description>database driver parameters</env-entry-description>
+  <env-entry>
+    <env-entry-name>DriverClassName</env-entry-name>
+    <env-entry-value>com.mysql.jdbc.Driver</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>Url</env-entry-name>
+    <env-entry-value>jdbc:mysql://localhost/petreg_db</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+  <env-entry>
+    <env-entry-name>UserId</env-entry-name>
+    <!-- replace ****** with the correct mysql userid -->
+    <env-entry-value>*****</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>  
+  <env-entry>
+    <env-entry-name>Password</env-entry-name>
+    <!-- replace ****** with the correct mysql password -->
+    <env-entry-value>******</env-entry-value>
+    <env-entry-type>java.lang.String</env-entry-type>
+  </env-entry>
+    
+    
+</web-app>
