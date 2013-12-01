@@ -12,7 +12,7 @@ public class Product {
    private double price;
    private String name, category;
 
-   public Product(boolean available, int PID, double price, String name, String category){
+   public Product(int PID, String name, double price, boolean available, String category){
       this.available = available;
       this.PID = PID;
       this.price = price;

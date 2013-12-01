@@ -1,9 +1,12 @@
-package model;
+package model.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.naming.*;
 
@@ -22,14 +25,23 @@ public abstract class DBHandler {
    * Get parameters required to open DBMS connection.
    */
   public DBHandler() {
+    
     try {
       Context envCtx = (Context) (new InitialContext())
           .lookup("java:comp/env");
       driverName = (String) envCtx.lookup("DriverClassName");
+      
+      driverName = "com.mysql.jdbc.Driver";
+      
       Class.forName(driverName);
       url = (String) envCtx.lookup("Url");
       userId = (String) envCtx.lookup("UserId");
       password = (String) envCtx.lookup("Password");
+      
+      url = "jdbc:mysql://localhost/test";
+      userId = "team05";
+      password = "fox7trot";
+      
     } catch (NamingException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {

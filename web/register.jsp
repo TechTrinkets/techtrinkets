@@ -16,7 +16,7 @@
         <h1>TechTrinkets Registration</h1>
         Please Fill In All Information<br><br/>
         
-        <form>
+        <form action="controller?action=register" method="post">
             
             First Name: <input type="text" name="firstname">
             Last Name: <input type="text" name="lastname">
@@ -39,7 +39,7 @@
             <p>Secret Question: <input type="text" name="question"></p>
             <p>Secret Answer: <input type="text" name="answer"></p>
             
-            <p><input type="submit" value="Submit"></p>
+            <p><input type="submit" value="Register" name="action"></p>
         </form>
     </body>
 </html>

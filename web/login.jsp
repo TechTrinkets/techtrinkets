@@ -45,7 +45,7 @@
 
             <div id="content">
         <h2>Log in to your account:</h2>
-        <form>
+        <form action="controller?action=login" method="post">
             User Name: <input type="text" name="username"> <br />
             Password: <input type="password" name="pwd">
             <p><input type="submit" value="Submit"></p>

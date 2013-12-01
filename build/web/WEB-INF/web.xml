@@ -30,19 +30,19 @@
   </env-entry>
   <env-entry>
     <env-entry-name>Url</env-entry-name>
-    <env-entry-value>jdbc:mysql://localhost/petreg_db</env-entry-value>
+    <env-entry-value>jdbc:mysql://cs347.cs.jmu.edu/team05_db</env-entry-value>
     <env-entry-type>java.lang.String</env-entry-type>
   </env-entry>
   <env-entry>
     <env-entry-name>UserId</env-entry-name>
     <!-- replace ****** with the correct mysql userid -->
-    <env-entry-value>*****</env-entry-value>
+    <env-entry-value>team05</env-entry-value>
     <env-entry-type>java.lang.String</env-entry-type>
   </env-entry>  
   <env-entry>
     <env-entry-name>Password</env-entry-name>
     <!-- replace ****** with the correct mysql password -->
-    <env-entry-value>******</env-entry-value>
+    <env-entry-value>fox7trot</env-entry-value>
     <env-entry-type>java.lang.String</env-entry-type>
   </env-entry>
     

@@ -2,6 +2,7 @@ package model;
 
 import java.util.*;
 import java.sql.*;
+import model.db.DBQueryHandler;
 
 /*
  * Handle requests for order information

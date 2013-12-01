@@ -6,6 +6,7 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Product;
 import model.SearchRequest;
+import model.User;
 import model.UserRequest;
 import model.UserUpdate;
 
@@ -83,10 +85,40 @@ public class ShoppingControl extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        if (request.getParameter("action").compareTo("Register") == 0) 
+        if (request.getParameter("action") != null)
         {
-            handleCreateAccount(request,response);
-        }
+            
+         
+           if(request.getParameter("action").equals("register")) 
+           {
+                handleCreateAccount(request,response);
+           }
+           else if(request.getParameter("action").equals("login"))
+           {
+               handleLogin(request,response);
+           }
+           else if( request.getParameter("action").equals("search"))
+           {
+               forwardRequest(request,response,"/search.jsp");
+           }
+           else if( request.getParameter("action").equals("productinfo"))
+           {
+               
+           }
+           else if( request.getParameter("action").equals("addtocart"))
+           {
+                /*
+                String pid = request.getParameter("PID");
+                HttpSession session = request.getSession(true);
+                ShoppingCart previousItems = (ShoppingCart)session.getAttribute("cartitems");
+                previousItems.add(pid);
+                session.setAttribute("cartitems", previousItems);
+                forwardRequest(request, response, "/recommendation.jsp");
+                */
+           }
+           
+        
+        }   
         else if( request.getParameter("secretanswer") != null)
         {
             String secretanswer = request.getParameter("answer");
@@ -100,34 +132,7 @@ public class ShoppingControl extends HttpServlet {
                 //error message
             }
         }
-        else if (request.getParameter("searchform") != null)
-        {
-            //String searchterms = request.getParameter("searchform");
-            //forwardRequest(request,response,"search.jsp");
-            
-        }
-        
-        if (request.getParameter("login") != null) {
-            //login request
-            String username = request.getParameter("username");
-            String pwd = request.getParameter("pwd");
-            
-            //search db for username and password match
-            //Session attribute?
-            HttpSession session = request.getSession(true);
-            session.setAttribute("loggedin", new Boolean(true));
-            session.setAttribute("userid", username);
-            
-        }
-        else if (request.getParameter("selectProduct") != null) {
-            handleSelectProduct(request, response);
-        } else if (request.getParameter("droppet") != null) {
-            //handleDrop(request, response);
-        }
-        //forwardRequest(request, response, "/showtable.jsp");
-        
-        
-        //processRequest(request, response);
+     
     }
 
     private void handleCreateAccount(HttpServletRequest request,
@@ -136,18 +141,22 @@ public class ShoppingControl extends HttpServlet {
             // create new user
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
+            String username = request.getParameter("username");
             String email = request.getParameter("email");
             String confirmemail = request.getParameter("confirmemail");
             String phone = request.getParameter("phonenumber");
+            int phonei = Integer.parseInt(phone);
             String street = request.getParameter("streetadd");
-            String city = request.getParameter("phonenumber");
+            String city = request.getParameter("city");
             String state = request.getParameter("state");
-            String zipcode = request.getParameter("zipcode");                    
+            String zipcode = request.getParameter("zipcode"); 
+            int zip = Integer.parseInt(zipcode);
             String password = request.getParameter("password");
             String passwordconfirm = request.getParameter("passwordconfirm");
             String secretquestion = request.getParameter("question");
             String secretanswer = request.getParameter("answer");
             //boolean terms = request.getParameter("terms");
+            
             
             if(firstName == null) //check for alpha
             {
@@ -183,9 +192,8 @@ public class ShoppingControl extends HttpServlet {
             
             UserUpdate newuser = new UserUpdate();
             boolean successAdd = false;
-            //successAdd = newuser.addUser(int UID, firstName, lastName,
-            //      String city, String state, int zipCode, int phoneNum,
-            //      email, password, username);
+            successAdd = newuser.addUser(123, firstName, lastName, city, state, zip, phonei,
+                  email, password, username);
             
            if( !successAdd )
            { // could not add to db
@@ -196,6 +204,28 @@ public class ShoppingControl extends HttpServlet {
            
     }
     
+    private void handleLogin(HttpServletRequest request,
+          HttpServletResponse response) throws IOException, ServletException {
+        
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
+            
+            UserRequest ur = new UserRequest();
+            User user = ur.getUser(username);
+            if(user != null && user.getPassword().compareTo(password)==0)
+            {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("loggedin", new Boolean(true));
+                session.setAttribute("userid", username);
+                forwardRequest(request, response, "/index.jsp");
+            }
+            else
+            {
+                //add error message
+                forwardRequest(request, response, "/login.jsp");
+            }
+        
+    }    
     
     private void handleSelectProduct(HttpServletRequest request,
           HttpServletResponse response) throws IOException, ServletException {
@@ -215,10 +245,18 @@ public class ShoppingControl extends HttpServlet {
         } else {
           // execute add transaction
           SearchRequest sr = new SearchRequest();
-          Product p = sr.productInfo(pid);
+          //Product p = sr.productInfo();
           //addMessage = addResult ? "product found" : "Pet add failed";
         }
         //session.setAttribute("addmessage", addMessage);
+    }
+    
+    private void forwardRequest(HttpServletRequest request,
+            HttpServletResponse response, String forwardURL)
+            throws IOException, ServletException
+    {        
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(forwardURL);
+        dispatcher.forward(request, response);
     }
     
     

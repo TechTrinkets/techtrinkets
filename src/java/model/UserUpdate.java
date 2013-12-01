@@ -1,6 +1,7 @@
 package model;
 
 import java.sql.*;
+import model.db.DBCommandHandler;
 
 /*
  * Handle user update and deletions requests
@@ -17,7 +18,7 @@ import java.sql.*;
                   String email, String password, String username) {
       String hi = Integer.toString(zipCode);
       System.out.print(hi);
-      
+            
       //Check if proper values are not null and then return false
       if (UID < 1 || firstName.length() == 0 || lastName.length() == 0
           || city.length() == 0 || state.length() == 0 || Integer.toString(zipCode).length() < 5
