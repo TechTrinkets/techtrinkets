@@ -53,19 +53,6 @@ public class SearchRequest {
        
     public ArrayList<Product> search(String searchterms)
     {
-    	/* I am assuming that searchTerms is what the user enters into the search bar
-    	 * and is what is used to query the database. So, under that assumption I will
-    	 * create multiple queries to be executed and if they return an empty set, 
-    	 * then we just go ahead and execute another query.
-    	 *
-    	 * For example, say they enter "Football", we run a query on the category, which
-    	 * would return null because we don't have any football category. So we would
-    	 * then we run a query on the the product table's 'name' field. In this case, 
-    	 * it would return any products named football. Then, if they enter something
-    	 * that causes the queries to return all empty sets, then we tell them that nothing
-    	 * could be found based on searchTerms.
-    	 */
-    	
         //Check if searchTerms contains only letters or a hyphen
         
         ArrayList<Product> result = new ArrayList<Product>();
@@ -102,17 +89,9 @@ public class SearchRequest {
          	    e.printStackTrace();
       		}
 	    }
+	    return result;
         }
     }//search
-             /*
-                Input search terms
-                * Split into individual terms
-                * for each term
-                    Create db query
-                    Execute db query handler
-		Create Product objects with results
-		Return list of Product objects
-             */
     
     public Product productInfo(int input)
     {
