@@ -12,7 +12,7 @@ import model.db.DBQueryHandler;
 public class UserRequest{
 
    public ArrayList<Object> getUserTable() {
-      String query = "select * from user";
+      String query = "SELECT * FROM Users;";
       ArrayList<Object> result = new ArrayList<Object>();
       
       try {
@@ -50,7 +50,7 @@ public class UserRequest{
    }
    
    public User getUser(String user) {
-      String query = "select * from Users where username='"+user+"'";
+      String query = "SELECT * FROM Users WHERE username='"+user+"'";
       User result = null;
      
       
@@ -89,7 +89,7 @@ public class UserRequest{
    }
    
    public String requestQuestion(){
-       String query = "select question from user where username = 'test123'";
+      String query = "select question from user where username = 'test123'";
       String result = "";
       
       try {
