@@ -107,14 +107,15 @@ public class ShoppingControl extends HttpServlet {
            }
            else if( request.getParameter("action").equals("addtocart"))
            {
-                /*
+                
                 String pid = request.getParameter("PID");
                 HttpSession session = request.getSession(true);
-                ShoppingCart previousItems = (ShoppingCart)session.getAttribute("cartitems");
-                previousItems.add(pid);
-                session.setAttribute("cartitems", previousItems);
-                forwardRequest(request, response, "/recommendation.jsp");
-                */
+                //ShoppingCart previousItems = (ShoppingCart)session.getAttribute("cartitems");
+                //previousItems.add(pid);
+                //session.setAttribute("cartitems", previousItems);
+                
+                //forwardRequest(request, response, "/recommendation.jsp");
+                
            }
            
         
@@ -139,8 +140,8 @@ public class ShoppingControl extends HttpServlet {
           HttpServletResponse response) throws IOException, ServletException {
     
             // create new user
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
+            String firstName = request.getParameter("firstname");
+            String lastName = request.getParameter("lastname");
             String username = request.getParameter("username");
             String email = request.getParameter("email");
             String confirmemail = request.getParameter("confirmemail");
@@ -151,12 +152,13 @@ public class ShoppingControl extends HttpServlet {
             String state = request.getParameter("state");
             String zipcode = request.getParameter("zipcode"); 
             int zip = Integer.parseInt(zipcode);
-            String password = request.getParameter("password");
-            String passwordconfirm = request.getParameter("passwordconfirm");
-            String secretquestion = request.getParameter("question");
-            String secretanswer = request.getParameter("answer");
+            String password = request.getParameter("pwd");
+            String passwordconfirm = request.getParameter("confirmpwd");
+            String sec_quest = request.getParameter("question");
+            String sec_answer = request.getParameter("answer");
             //boolean terms = request.getParameter("terms");
             
+            /*
             
             if(firstName == null) //check for alpha
             {
@@ -186,14 +188,14 @@ public class ShoppingControl extends HttpServlet {
                 //pwd does not match
             }
             //if( !terms){}
-            
+            */
             //check if user exists in db already?
             //need to input a username, city, state, zip, phone
             
             UserUpdate newuser = new UserUpdate();
             boolean successAdd = false;
             successAdd = newuser.addUser(123, firstName, lastName, city, state, zip, phonei,
-                  email, password, username);
+                  email, password, username, sec_quest, sec_answer, street);
             
            if( !successAdd )
            { // could not add to db
@@ -208,7 +210,7 @@ public class ShoppingControl extends HttpServlet {
           HttpServletResponse response) throws IOException, ServletException {
         
             String username = request.getParameter("username");
-            String password = request.getParameter("password");
+            String password = request.getParameter("pwd");
             
             UserRequest ur = new UserRequest();
             User user = ur.getUser(username);

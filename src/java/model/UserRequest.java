@@ -35,9 +35,13 @@ public class UserRequest{
             String email = rs.getString(i++);
             String password = rs.getString(i++);
             String username = rs.getString(i++);
+            String sec_quest = rs.getString(i++);
+            String sec_answer = rs.getString(i++);
+            String street = rs.getString(i++);
             
             User user = new User(UID, firstName, lastName, city, state,
-                     zipCode, phoneNum, email, password, username);
+                     zipCode, phoneNum, email, password, username,
+                    sec_quest, sec_answer, street);
             result.add(user);
          }
          
@@ -74,9 +78,13 @@ public class UserRequest{
             String email = rs.getString(i++);
             String password = rs.getString(i++);
             String username = rs.getString(i++);
+            String sec_quest = rs.getString(i++);
+            String sec_answer = rs.getString(i++);
+            String street = rs.getString(i++);
             
-            result= new User(UID, firstName, lastName, city, state,
-                     zipCode, phoneNum, email, password, username);
+            result = new User(UID, firstName, lastName, city, state,
+                     zipCode, phoneNum, email, password, username,
+                    sec_quest, sec_answer, street);
             
          }
          

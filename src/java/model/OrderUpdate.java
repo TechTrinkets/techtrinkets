@@ -10,4 +10,5 @@ package model;
  */
 public class OrderUpdate {
     
+    //after an order is submitted, needs to be added to orders table
 }

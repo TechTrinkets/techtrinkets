@@ -21,18 +21,24 @@
         <%
             SearchRequest sr = new SearchRequest();
             String searchterms = request.getParameter("searchterm");
+
             ArrayList<Product> result = sr.search(searchterms);
             
             if( result == null)
                 out.println("<p>Sorry your search didn't return any products.</p>");
-            
-            for(Product p: result)
+            else
             {
-                out.println("<li>"+p.getName()+"</li>");
-                out.println("<li>"+p.getPrice()+"</li>");
-                out.println("<li>"+p.getCategory()+"</li>");
-                out.println("<li>"+p.getAvailable()+"</li>");
-                out.println("<li>"+p.getPID()+"</li>");
+                out.println("<p>Result</p>");
+                for(Product p: result)
+                {
+                    //out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
+                    //       p.getImagePath()+"'/></a>");
+                    out.println("<li>"+p.getName()+"</li>");
+                    out.println("<li>"+p.getPrice()+"</li>");
+                    out.println("<li>"+p.getCategory()+"</li>");
+                    out.println("<li>"+p.getAvailable()+"</li>");
+                    out.println("<li>"+p.getPID()+"</li>");
+                }
             }
         %>    
             

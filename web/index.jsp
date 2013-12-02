@@ -42,7 +42,7 @@
             </div>
             <div id="search"> <br /><br />
                 <form action="controller?action=search" method="post">
-                    <input type="text" id="searchterm" />
+                    <input type="text" id="searchterm" name="searchterm"/>
                     <input type="submit" value="Search" id="searchbutton"/>
                 </form>
             </div>

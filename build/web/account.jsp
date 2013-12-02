@@ -4,6 +4,8 @@
     Author     : Rissy
 --%>
 
+<%@page import="model.User"%>
+<%@page import="model.UserRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -44,17 +46,24 @@
             </div>
 
             <div id="content">
-                <h2>Create a new account:</h2>
+                <h2>Account Information</h2>
                 
-                <form action="#something">
-                    First Name: <input type="input" name="firstName" alt="First Name" /> <br />
-                    Last Name: <input type="input" name="lastName" alt="Last Name" /> <br />
-                    Email: <input type="input" name="email" alt="Email Address" /> <br />
-                    Password <input type="password" name="password" alt="Password" /> <br />
-                    Retype Password: <input type="password" name="passwordconfirm" alt="Confirm Password" /> <br />
-                    <input type="checkbox" name="terms" />I agree to the <a href="#terms">terms</a>. <br /><br />
-                    <input type="submit" name="submit" alt="Submit" />
-                </form>
+                <%
+                    UserRequest ur = new UserRequest();
+                    if( session.getAttribute("loggedin").equals(true))
+                    {
+                        String username = (String)session.getAttribute("userid");
+                        User u = ur.getUser(username);
+                    }
+                    else
+                    {
+                        out.println("<p>You are not logged in!</p>");
+                    }
+                    
+                    
+                    
+                %>
+                
             
             </div>
 

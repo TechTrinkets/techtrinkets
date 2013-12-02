@@ -18,6 +18,8 @@ import model.db.DBQueryHandler;
  */
 public class SearchRequest {
     
+    //get cart method, get product info: name, price, image
+    
     public ArrayList<Product> getProductTable() {
       String query = "select * from Products";
       ArrayList<Product> result = new ArrayList<Product>();
@@ -53,34 +55,18 @@ public class SearchRequest {
        
     public ArrayList<Product> search(String searchterms)
     {
-    	/* I am assuming that searchTerms is what the user enters into the search bar
-    	 * and is what is used to query the database. So, under that assumption I will
-    	 * create multiple queries to be executed and if they return an empty set, 
-    	 * then we just go ahead and execute another query.
-    	 *
-    	 * For example, say they enter "Football", we run a query on the category, which
-    	 * would return null because we don't have any football category. So we would
-    	 * then we run a query on the the product table's 'name' field. In this case, 
-    	 * it would return any products named football. Then, if they enter something
-    	 * that causes the queries to return all empty sets, then we tell them that nothing
-    	 * could be found based on searchTerms.
-    	 */
-    	
+    	ArrayList<Product> result = new ArrayList<Product>();
         //Check if searchTerms contains only letters or a hyphen
-        
-        ArrayList<Product> result = new ArrayList<Product>();
-        
-        if(Pattern.matches("^[a-zA-Z\- ]", searchTerms)
+        if(Pattern.matches("^[a-zA-Z]+$", searchterms))
         {
+            System.out.println("Pattern matches");
 	    if(searchterms.compareTo("allproducts")==0)
 	        return getProductTable();
 	    else
 	    {
-	        String nameQuery = "SELECT * FROM Products WHERE name='" 
-	             		 + searchTerms + "';";
-	        String categoryQuery = "SELECT * FROM Products WHERE category='"
-	        		     + searchTerms + "';";
-	        
+	        String query = "SELECT * FROM Products WHERE name LIKE '%" 
+	             		 + searchterms + "%' OR category LIKE '%"
+                                 + searchterms + "%';";
 	        try
 	        {
          	    DBQueryHandler dbQueHand = new DBQueryHandler();
@@ -103,30 +89,18 @@ public class SearchRequest {
       		}
 	    }
         }
+        return result;
     }//search
-             /*
-                Input search terms
-                * Split into individual terms
-                * for each term
-                    Create db query
-                    Execute db query handler
-		Create Product objects with results
-		Return list of Product objects
-             */
     
     public Product productInfo(int input)
     {
-      System.out.println("product info test");
+
       String query = "SELECT * FROM Products WHERE PID=" + input + ";";
       Product result = null;
       try {
          DBQueryHandler dbQueHand = new DBQueryHandler();
          ResultSet rs = dbQueHand.doQuery(query);
-         //ResultSetMetaData rsmd = rs.getMetaData();
-         
-         //int numCols = rsmd.getColumnCount();
-         //result.add(new Integer(numCols));
-         
+
          while (rs.next()) {
             int i = 1;
             int PID = rs.getInt(i++);

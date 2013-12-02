@@ -7,11 +7,13 @@ package model;
 
 public class User {
 
-   private String firstName, lastName, city, state, email, password, username;
+   private String firstName, lastName, city, state, email, password, 
+           username, sec_quest, sec_answer, street;
    private int UID, zipCode, phoneNum; 
    
    public User(int UID, String firstName, String lastName, String city, 
-         String state, int zipCode, int phoneNum, String email, String password, String username) {
+         String state, int zipCode, int phoneNum, String email, String password, 
+         String username, String sec_quest, String sec_answer, String street) {
       
       this.firstName = firstName;
       this.lastName = lastName;
@@ -23,10 +25,14 @@ public class User {
       this.zipCode = zipCode;
       this.phoneNum = phoneNum;
       this.username = username;
+      this.sec_quest = sec_quest;
+      this.sec_answer = sec_answer;
+      this.street = street;
    }
    
    public String getFirstName(){ return firstName;}
    public String getLastName(){ return lastName;}
+   public String getStreetAddress() {return street;}
    public String getCity(){ return city;}
    public String getState(){ return state;}
    public String getEmail(){ return email;}
@@ -34,5 +40,7 @@ public class User {
    public int getUID(){ return UID; }
    public int getZipCode(){ return zipCode; }
    public int getPhoneNumber(){ return phoneNum; }
+   public String getSecQuest(){ return sec_quest;}
+   public String getSecAnswer(){ return sec_answer;}
    
 }

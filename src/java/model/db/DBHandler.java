@@ -31,16 +31,12 @@ public abstract class DBHandler {
           .lookup("java:comp/env");
       driverName = (String) envCtx.lookup("DriverClassName");
       
-      driverName = "com.mysql.jdbc.Driver";
-      
       Class.forName(driverName);
       url = (String) envCtx.lookup("Url");
       userId = (String) envCtx.lookup("UserId");
       password = (String) envCtx.lookup("Password");
       
-      url = "jdbc:mysql://localhost/test";
-      userId = "team05";
-      password = "fox7trot";
+     
       
     } catch (NamingException e) {
       e.printStackTrace();

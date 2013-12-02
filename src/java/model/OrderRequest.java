@@ -2,6 +2,7 @@ package model;
 
 import java.util.*;
 import java.sql.*;
+import java.util.regex.Pattern;
 import model.db.DBQueryHandler;
 
 /*
@@ -47,10 +48,9 @@ public class OrderRequest{
      
         ArrayList<Order> result = new ArrayList<Order>();
         
-        if(Pattern.matches("^[0-9]", String.valueOf(oid))
+        if(Pattern.matches("^[0-9]+$", String.valueOf(oid)))
         {
-            String query = "SELECT * FROM Orders WHERE OID=";
-                           + oid + ";";
+            String query = "SELECT * FROM Orders WHERE OID="+ oid + ";";
             
             try {
                 DBQueryHandler dbQueHand = new DBQueryHandler();
@@ -71,4 +71,7 @@ public class OrderRequest{
                 e.printStackTrace();
             }
         }
+        return result;
     }//getOrder
+    
+}

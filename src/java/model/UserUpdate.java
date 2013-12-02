@@ -15,28 +15,32 @@ import model.db.DBCommandHandler;
     */
    public boolean addUser(int UID, String firstName, String lastName,
                   String city, String state, int zipCode, int phoneNum,
-                  String email, String password, String username) {
-      String hi = Integer.toString(zipCode);
-      System.out.print(hi);
+                  String email, String password, String username, String sec_quest,
+                  String sec_answer, String street) {
+  
             
       //Check if proper values are not null and then return false
-      if (UID < 1 || firstName.length() == 0 || lastName.length() == 0
+       //TO DO! add checks for sec quest, answer, street
+      /*if (UID < 1 || firstName.length() == 0 || lastName.length() == 0
           || city.length() == 0 || state.length() == 0 || Integer.toString(zipCode).length() < 5
           || Integer.toString(zipCode).length() > 5 || email.length() == 0 || password.length() == 0)
          return false;
-      
+      */
       DBCommandHandler dbComHand = new DBCommandHandler();
-      String command = "INSERT INTO user VALUES(";
-      command += "'" + UID + "'";
-      command += ", '" + firstName + "'";
+      String command = "INSERT INTO Users(first_name, last_name, city, state, zipcode, phone_number,"
+              + "email_address, password, username, sec_quest, sec_answer, street_address) VALUES(";
+      command += "'" + firstName + "'";
       command += ", '" + lastName + "'";
       command += ", '" + city + "'";
       command += ", '" + state + "'";
-      command += ", '" + zipCode + "'";
-      command += ", '" + phoneNum + "'";
+      command += "," + zipCode;
+      command += "," + phoneNum;
       command += ", '" + email + "'";
       command += ", '" + password + "'";
       command += ", '" + username + "'";
+      command += ", '" + sec_quest + "'";
+      command += ", '" + sec_answer + "'";
+      command += ", '" + street + "'";
       command += ")";
       
       try {

@@ -18,6 +18,8 @@
         <h1>Hello World!</h1>
         
         <%
+            //Is this the cart page too??
+            
             Integer pid = Integer.parseInt(request.getParameter("PID"));
             out.println("Thanks for adding");
             
