@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import model.db.DBQueryHandler;
 
 
@@ -95,12 +96,13 @@ public class SearchRequest {
             		Product product = new Product(PID, name, price, available, category);
             		result.add(product);
          	    }
-         	    db.close();
+         	    dbQueHand.close();
          	    
 	        } catch (SQLException e) {
          	    e.printStackTrace();
       		}
-         }
+	    }
+        }
     }//search
              /*
                 Input search terms
