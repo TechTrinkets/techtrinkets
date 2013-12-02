@@ -52,11 +52,56 @@ public class SearchRequest {
        
     public ArrayList<Product> search(String searchterms)
     {
-       
-        if(searchterms.compareTo("allproducts")==0)
-             return getProductTable();
-        else
-         {
+    	/* I am assuming that searchTerms is what the user enters into the search bar
+    	 * and is what is used to query the database. So, under that assumption I will
+    	 * create multiple queries to be executed and if they return an empty set, 
+    	 * then we just go ahead and execute another query.
+    	 *
+    	 * For example, say they enter "Football", we run a query on the category, which
+    	 * would return null because we don't have any football category. So we would
+    	 * then we run a query on the the product table's 'name' field. In this case, 
+    	 * it would return any products named football. Then, if they enter something
+    	 * that causes the queries to return all empty sets, then we tell them that nothing
+    	 * could be found based on searchTerms.
+    	 */
+    	
+        //Check if searchTerms contains only letters or a hyphen
+        
+        ArrayList<Product> result = new ArrayList<Product>();
+        
+        if(Pattern.matches("^[a-zA-Z\- ]", searchTerms)
+        {
+	    if(searchterms.compareTo("allproducts")==0)
+	        return getProductTable();
+	    else
+	    {
+	        String nameQuery = "SELECT * FROM Products WHERE name='" 
+	             		 + searchTerms + "';";
+	        String categoryQuery = "SELECT * FROM Products WHERE category='"
+	        		     + searchTerms + "';";
+	        
+	        try
+	        {
+         	    DBQueryHandler dbQueHand = new DBQueryHandler();
+         	    ResultSet rs = dbQueHand.doQuery(query);
+         	    
+         	    while (rs.next()) {
+            		int i = 1;
+            		int PID = rs.getInt(i++);
+            		String name = rs.getString(i++);
+            		double price = rs.getDouble(i++);
+            		boolean available = rs.getBoolean(i++);
+            		String category = rs.getString(i++);
+            		Product product = new Product(PID, name, price, available, category);
+            		result.add(product);
+         	    }
+         	    db.close();
+         	    
+	        } catch (SQLException e) {
+         	    e.printStackTrace();
+      		}
+         }
+    }//search
              /*
                 Input search terms
                 * Split into individual terms
@@ -66,16 +111,11 @@ public class SearchRequest {
 		Create Product objects with results
 		Return list of Product objects
              */
-         }
-        return null;
-    
-    }
     
     public Product productInfo(int input)
     {
       System.out.println("product info test");
-      String query = "SELECT * from Products where PID="+input;
-      //ArrayList<Product> result = new ArrayList<Product>();
+      String query = "SELECT * FROM Products WHERE PID=" + input + ";";
       Product result = null;
       try {
          DBQueryHandler dbQueHand = new DBQueryHandler();
@@ -94,7 +134,6 @@ public class SearchRequest {
             String category = rs.getString(i++);
             
             result = new Product(PID, name, price, available, category);
-            //result.add(product);
          }
          
          dbQueHand.close();
@@ -103,7 +142,6 @@ public class SearchRequest {
       }
       
       return result;  
-      
         
     }
 }
