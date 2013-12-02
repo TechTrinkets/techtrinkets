@@ -6,6 +6,7 @@ package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 import model.db.DBQueryHandler;
 
 
@@ -44,7 +45,7 @@ public class AccountRequest {
     
     public String getSecurityQuestion(int uid)
     {
-        if(Pattern.matches("^[0-9]", uid)) 
+        if(Pattern.matches("^[0-9]", String.valueOf(uid))) 
         {
             String query = "SELECT sec_quest FROM Users WHERE UID="
                             + uid + ";";
@@ -70,7 +71,7 @@ public class AccountRequest {
     
     public boolean validateSecurityAnswer(int uid, String inputanswer)
     {
-        if(Pattern.matches("^[0-9]", uid))
+        if(Pattern.matches("^[0-9]", String.valueOf(uid)))
         {
             //filter input
             String query = "SELECT sec_answer FROM Users WHERE UID="
