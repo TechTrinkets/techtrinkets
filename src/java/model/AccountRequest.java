@@ -17,8 +17,8 @@ public class AccountRequest {
     
     public User getAccountInfo()
     {
-        String query = "select * from user";
-        User retVal = null;
+        String query = "SELECT * FROM Users;";
+        User result = null;
         try{
             DBQueryHandler dbQueHand = new DBQueryHandler();
             ResultSet rs = dbQueHand.doQuery(query);
@@ -26,10 +26,11 @@ public class AccountRequest {
             while( rs.next())
             {
                 int i = 1;
-                String firstname = rs.getString(i);
-                i++;
-                String lastname = rs.getString(i);
-                i++;
+                String firstname = rs.getString(i++);
+                String lastname = rs.getString(i++);
+                /*
+                * More information
+                */
                 //retVal = new User(firstname, lastname);
             }
             dbQueHand.close();
@@ -37,54 +38,62 @@ public class AccountRequest {
             ex.printStackTrace();
         }
         
-        return retVal;
+        return result;
         
     }
     
-    public String getSecurityQuestion()
+    public String getSecurityQuestion(int uid)
     {
-        String query = "select secquest from user where UID=123";
-        String retVal = null;
-        try{
-            DBQueryHandler dbQueHand = new DBQueryHandler();
-            ResultSet rs = dbQueHand.doQuery(query);
+        if(Pattern.matches("^[0-9]", uid)) 
+        {
+            String query = "SELECT sec_quest FROM Users WHERE UID="
+                            + uid + ";";
+            String result = null;
             
-            rs.next();
-            retVal = rs.getString(1);
-           
-            dbQueHand.close();
-        } catch( SQLException ex){
-            ex.printStackTrace();
+            try{
+                DBQueryHandler dbQueHand = new DBQueryHandler();
+                ResultSet rs = dbQueHand.doQuery(query);
+                
+                rs.next();
+                retVal = rs.getString(1);
+               
+                dbQueHand.close();
+            } catch( SQLException ex){
+                ex.printStackTrace();
+            }
+            
+            return result;
         }
         
-        return retVal;
-    
+        return "";
     }
     
-    public boolean validateSecurityAnswer(String inputanswer)
+    public boolean validateSecurityAnswer(int uid, String inputanswer)
     {
-        //filter input
-        String query = "select secanswer from user where UID=123";
-        String actualanswer;
-        try{
-            DBQueryHandler dbQueHand = new DBQueryHandler();
-            ResultSet rs = dbQueHand.doQuery(query);
-            
-            rs.next();
-            actualanswer = rs.getString(1);
-          
-            dbQueHand.close();
-            if(actualanswer.compareTo(inputanswer)==0)
-            {
-                return true;
+        if(Pattern.matches("^[0-9]", uid))
+        {
+            //filter input
+            String query = "SELECT sec_answer FROM Users WHERE UID="
+                            + uid + ";";
+            String actualanswer;
+            try{
+                DBQueryHandler dbQueHand = new DBQueryHandler();
+                ResultSet rs = dbQueHand.doQuery(query);
+                
+                rs.next();
+                actualanswer = rs.getString(1);
+              
+                dbQueHand.close();
+                if(actualanswer.compareTo(inputanswer)==0)
+                {
+                    return true;
+                }
+            } catch( SQLException ex){
+                ex.printStackTrace();
             }
-        } catch( SQLException ex){
-            ex.printStackTrace();
         }
         
        return false;
     
     }
-    
-    
 }
