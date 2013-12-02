@@ -30,20 +30,11 @@ public abstract class DBHandler {
       Context envCtx = (Context) (new InitialContext())
           .lookup("java:comp/env");
       driverName = (String) envCtx.lookup("DriverClassName");
-<<<<<<< HEAD
-      
-=======
->>>>>>> e8fa388589cdcfac6276fc711e9e91cc39c3ce51
       Class.forName(driverName);
       url = (String) envCtx.lookup("Url");
       userId = (String) envCtx.lookup("UserId");
       password = (String) envCtx.lookup("Password");
-      
-<<<<<<< HEAD
-     
-      
-=======
->>>>>>> e8fa388589cdcfac6276fc711e9e91cc39c3ce51
+ 
     } catch (NamingException e) {
       e.printStackTrace();
     } catch (ClassNotFoundException e) {
