@@ -55,7 +55,10 @@ public class SearchRequest {
        
     public ArrayList<Product> search(String searchterms)
     {
+<<<<<<< HEAD
     	ArrayList<Product> result = new ArrayList<Product>();
+=======
+>>>>>>> e8fa388589cdcfac6276fc711e9e91cc39c3ce51
         //Check if searchTerms contains only letters or a hyphen
         if(Pattern.matches("^[a-zA-Z]+$", searchterms))
         {
@@ -88,6 +91,7 @@ public class SearchRequest {
          	    e.printStackTrace();
       		}
 	    }
+	    return result;
         }
         return result;
     }//search
