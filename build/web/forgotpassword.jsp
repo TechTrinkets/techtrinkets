@@ -35,12 +35,12 @@
             <div id="menu">
                 Browse By Type:
                 <ul>
-                    <li><a href="#tshirts">T-Shirts</a></li>
-                    <li><a href="#Appliances">Appliances</a></li>
-                    <li><a href="#homeoffice">Home & Office</a></li>
-                    <li><a href="#toys">Toys</a></li>
-                    <li><a href="#clearance">Clearance</a></li>
-                    <li><a href="#allproducts">All Products</a></li>
+                    <li><a href="search.jsp?searchterm=tshirt">T-Shirts</a></li>
+                    <li><a href="search.jsp?searchterm=gadgets">Gadgets</a></li>
+                    <li><a href="search.jsp?searchterm=home">Home & Office</a></li>
+                    <li><a href="search.jsp?searchterm=toys">Toys</a></li>
+                    <li><a href="search.jsp?searchterm=clearance">Clearance</a></li>
+                    <li><a href="search.jsp?searchterm=allproducts">All Products</a></li>
                 </ul>
             </div>
             
