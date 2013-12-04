@@ -22,10 +22,6 @@ public class Product {
       this.category = category;
       this.image = image;
       this.description = description;
-<<<<<<< HEAD
-=======
-
->>>>>>> 431fa2434c1d81f24768b7abb19d7be35864365b
    }
    
    public boolean getAvailable(){ return available; }
