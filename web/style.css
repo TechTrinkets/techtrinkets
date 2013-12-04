@@ -69,7 +69,7 @@ html {
 
 #content {
     background-color:#FFFFFF;
-    height:500px;
+    height:600px;
     width:690px;
     padding: 20px;
     float:left;
@@ -97,4 +97,11 @@ a:visited {
 td {
     text-align: center;
     padding: 10px;
+    border-color:#000000;
+    border-width: 1px;
+}
+
+#add {
+    width:100px;
+    height: 30px;
 }

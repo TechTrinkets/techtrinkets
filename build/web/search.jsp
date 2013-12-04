@@ -28,28 +28,39 @@
             String searchterms = request.getParameter("searchterm");
 
             ArrayList<Product> result = sr.search(searchterms);
+            int count = 0;
             
             if( result == null)
                 out.println("<p>Sorry your search didn't return any products.</p>");
             else
             {
-                out.println("<p>Results:</p> <table> <tr>");
-                for(Product p: result)
+                int num = result.size();
+                out.println("<p>Results for \"" +searchterms + "\":</p>");
+                out.println("<table> <tr>");
+                for(int i=0; i<num; i++)
                 {
+                    
+                    Product p = result.get(i);
+                    
                     out.println("<td>");
-                    out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
-                           p.getImage()+"'/></a> <br /><br />");
-                    out.println(p.getName()+"<br />");
-                    out.println(p.getPrice()+"<br />");
+                    out.println("<a href=productinfo.jsp?PID="+p.getPID()+"><img src='images/"+
+                           p.getImage()+"' height=150px /> <br /><br />");
+                    out.println(p.getName()+"</a><br />");
+                    out.println("$" + p.getPrice()+"<br />");
                     %>
                     <form action="controller?action=addtocart&PID=<%=p.getPID()%>" method="post">
                     <input type="submit" value="Add to Cart" id="add"/>
                     </form>
                     <%
-                out.println("<td>");
+                    out.println("</td>");
+                    if ((i + 1) % 3 == 0)
+                    {
+                        out.println("</tr><tr>");
+                    }
                 }
-                out.println("</tr></table>");
-            }
+                    out.println("</tr></table>");
+                }
+            
         %>    
             
             </div>
