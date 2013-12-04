@@ -17,33 +17,9 @@
 
         <div id="container">
 
-            <div id="header">
-                Welcome, Guest - <a href="login.jsp">Sign In</a> - <a href="register.jsp">Register</a> - Shopping Cart (0) <hr />
-            </div>
-            <div id="logodiv">
-                <a href="#home">
-                    <img src="images/techtrinkets.png" id="logo" alt="Tech Trinkets" />
-                </a>
-            </div>
-            <div id="search"> <br /><br />
-                <form>
-                    <input type="text" id="searchform" />&nbsp;
-                    <input type="submit" value="Search!" id="searchbutton" alt="Search!" />
-                </form>
-            </div>
-            <div id="menu">
-                Browse By Type:
-                <ul>
-                    <li><a href="search.jsp?searchterm=tshirt">T-Shirts</a></li>
-                    <li><a href="search.jsp?searchterm=gadgets">Gadgets</a></li>
-                    <li><a href="search.jsp?searchterm=home">Home & Office</a></li>
-                    <li><a href="search.jsp?searchterm=toys">Toys</a></li>
-                    <li><a href="search.jsp?searchterm=clearance">Clearance</a></li>
-                    <li><a href="search.jsp?searchterm=allproducts">All Products</a></li>
-                </ul>
-            </div>
-            
-        <div id="content">
+            <%@include file="header.jsp" %>
+                        
+            <div id="content">
             <h1>Register Here:</h1>
             <form action="controller?action=register" method="post">
 
@@ -70,7 +46,8 @@
 
                 <p><input type="submit" value="Register" name="action"></p>
             </form>
-        
+            </div>
+   
             
         <div id="footer">
                 Copyright 2013 Tech Trinkets, Inc. All Rights Reserved. User Agreement and Privacy Policy.</div>

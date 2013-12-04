@@ -116,7 +116,7 @@ public class ShoppingControl extends HttpServlet {
            }
            else if( request.getParameter("action").equals("productinfo"))
            {
-               
+               forwardRequest(request,response,"/productinfo.jsp");
            }
            else if( request.getParameter("action").equals("addtocart"))
            {
@@ -137,7 +137,16 @@ public class ShoppingControl extends HttpServlet {
                 }
                 forwardRequest(request, response, "/recommend.jsp");                
            }
-           
+           else if( request.getParameter("action").equals("checkout"))
+           {
+               forwardRequest(request, response, "/billing.jsp");
+           }
+           else if( request.getParameter("action").equals("billing"))
+           {
+               //validate input
+               
+               forwardRequest(request, response, "/revieworder.jsp");
+           }
         
         }   
         else if( request.getParameter("secretanswer") != null)

@@ -16,11 +16,7 @@
         <title>Search Results</title>
     </head>
     <body>
-<<<<<<< HEAD
-=======
-        <h1>Your Search Results:</h1>
->>>>>>> 431fa2434c1d81f24768b7abb19d7be35864365b
-        
+
         <div id="container">
 
             <%@include file="header.jsp" %>
@@ -42,7 +38,7 @@
                 {
                     //out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
                     //       p.getImagePath()+"'/></a>");
-                    out.println("<li>"+p.getName()+"</li>");
+                    out.println("<li><a href='productinfo.jsp?PID="+p.getPID()+"'>"+p.getName()+"</a></li>");
                     out.println("<li>"+p.getPrice()+"</li>");
                     out.println("<li>"+p.getCategory()+"</li>");
                     out.println("<li>"+p.getAvailable()+"</li>");
