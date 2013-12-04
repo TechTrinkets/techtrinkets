@@ -33,7 +33,7 @@
                 out.println("<p>Sorry your search didn't return any products.</p>");
             else
             {
-                out.println("<p>Result</p>");
+                out.println("<p>Results:</p> <table>");
                 for(Product p: result)
                 {
                     //out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
@@ -50,6 +50,7 @@
                     </form>
                     <%
                 }
+                out.println("</table>");
             }
         %>    
             
