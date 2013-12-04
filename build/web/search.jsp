@@ -16,11 +16,7 @@
         <title>Search Results</title>
     </head>
     <body>
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 5c3a6bb91c1271839772a4566e480b66bd0ead95
         <div id="container">
 
             <%@include file="header.jsp" %>
@@ -42,9 +38,7 @@
                 out.println("<p>Results for \"" +searchterms + "\":</p>");
                 out.println("<table> <tr>");
                 for(int i=0; i<num; i++)
-                {
-<<<<<<< HEAD
-                    
+                {     
                     Product p = result.get(i);
                     
                     out.println("<td>");
@@ -52,24 +46,6 @@
                            p.getImage()+"' height=150px /> <br /><br />");
                     out.println(p.getName()+"</a><br />");
                     out.println("$" + p.getPrice()+"<br />");
-=======
-<<<<<<< HEAD
-                    //out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
-                    //       p.getImagePath()+"'/></a>");
-                    out.println("<li><a href='productinfo.jsp?PID="+p.getPID()+"'>"+p.getName()+"</a></li>");
-                    out.println("<li>"+p.getPrice()+"</li>");
-                    out.println("<li>"+p.getCategory()+"</li>");
-                    out.println("<li>"+p.getAvailable()+"</li>");
-                    out.println("<li>"+p.getPID()+"</li>");
-                    out.println("<li>"+p.getDescription()+"</li>");
-=======
-                    out.println("<td>");
-                    out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
-                           p.getImage()+"'/></a> <br /><br />");
-                    out.println(p.getName()+"<br />");
-                    out.println(p.getPrice()+"<br />");
->>>>>>> 5c3a6bb91c1271839772a4566e480b66bd0ead95
->>>>>>> 2fbc726d6eb19a0ac7fc042011ead09e90406f2c
                     %>
                     <form action="controller?action=addtocart&PID=<%=p.getPID()%>" method="post">
                     <input type="submit" value="Add to Cart" id="add"/>
