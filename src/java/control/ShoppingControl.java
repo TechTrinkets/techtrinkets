@@ -6,6 +6,7 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -69,6 +70,7 @@ public class ShoppingControl extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("do get");
         processRequest(request, response);
     }
 
@@ -84,7 +86,7 @@ public class ShoppingControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        System.out.println("dopost");
         if (request.getParameter("action") != null)
         {
             
@@ -107,15 +109,22 @@ public class ShoppingControl extends HttpServlet {
            }
            else if( request.getParameter("action").equals("addtocart"))
            {
-                
-                String pid = request.getParameter("PID");
+                System.out.println("add to cart");
+                Integer pid = Integer.parseInt(request.getParameter("PID"));
                 HttpSession session = request.getSession(true);
-                //ShoppingCart previousItems = (ShoppingCart)session.getAttribute("cartitems");
-                //previousItems.add(pid);
-                //session.setAttribute("cartitems", previousItems);
-                
-                //forwardRequest(request, response, "/recommendation.jsp");
-                
+                if( session.getAttribute("cartitems") != null )
+                {
+                    ArrayList<Integer> previousItems = (ArrayList<Integer>)session.getAttribute("cartitems");
+                    previousItems.add(pid);
+                    session.setAttribute("cartitems", previousItems);
+                }
+                else
+                {    
+                    ArrayList<Integer> newItem = new ArrayList<Integer>();
+                    newItem.add(pid);
+                    session.setAttribute("cartitems", newItem);
+                }
+                forwardRequest(request, response, "/recommend.jsp");                
            }
            
         

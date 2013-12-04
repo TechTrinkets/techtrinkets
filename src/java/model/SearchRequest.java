@@ -39,8 +39,10 @@ public class SearchRequest {
             double price = rs.getDouble(i++);
             boolean available = rs.getBoolean(i++);
             String category = rs.getString(i++);
+            String image = rs.getString(i++);
+            String description = rs.getString(i++);
             
-            Product product = new Product(PID, name, price, available, category);
+            Product product = new Product(PID, name, price, available, category, image, description);
             result.add(product);
          }
          
@@ -80,7 +82,10 @@ public class SearchRequest {
             		double price = rs.getDouble(i++);
             		boolean available = rs.getBoolean(i++);
             		String category = rs.getString(i++);
-            		Product product = new Product(PID, name, price, available, category);
+            		String image = rs.getString(i++);
+                        String description = rs.getString(i++);
+            
+                        Product product = new Product(PID, name, price, available, category, image, description);
             		result.add(product);
          	    }
          	    dbQueHand.close();
@@ -110,8 +115,10 @@ public class SearchRequest {
             double price = rs.getDouble(i++);
             boolean available = rs.getBoolean(i++);
             String category = rs.getString(i++);
+            String image = rs.getString(i++);
+            String description = rs.getString(i++);
             
-            result = new Product(PID, name, price, available, category);
+            result = new Product(PID, name, price, available, category, image, description);
          }
          
          dbQueHand.close();

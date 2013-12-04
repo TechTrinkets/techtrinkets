@@ -38,6 +38,12 @@
                     out.println("<li>"+p.getCategory()+"</li>");
                     out.println("<li>"+p.getAvailable()+"</li>");
                     out.println("<li>"+p.getPID()+"</li>");
+                    out.println("<li>"+p.getDescription()+"</li>");
+                    %>
+                    <form action="controller?action=addtocart&PID=<%=p.getPID()%>" method="post">
+                    <input type="submit" value="Add to Cart" id="add"/>
+                    </form>
+                    <%
                 }
             }
         %>    

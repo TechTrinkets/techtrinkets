@@ -32,7 +32,8 @@
                     else
                     {
                 %>    
-                Welcome, Guest - <a href="login.jsp">Sign In</a> - <a href="register.jsp">Register</a>- Shopping Cart (0) <hr />
+                Welcome, Guest - <a href="login.jsp">Sign In</a> - <a href="register.jsp">Register</a>- 
+                Shopping Cart (0) <hr />
                 <%  } %>
             </div>
             <div id="logodiv">
@@ -50,7 +51,7 @@
                 Browse By Type:
                 <ul>
                     <li><a href="search.jsp?searchterm=tshirt">T-Shirts</a></li>
-                    <li><a href="search.jsp?searchterm=appliances">Appliances</a></li>
+                    <li><a href="search.jsp?searchterm=gadgets">Gadgets</a></li>
                     <li><a href="search.jsp?searchterm=homeoffice">Home & Office</a></li>
                     <li><a href="search.jsp?searchterm=toys">Toys</a></li>
                     <li><a href="search.jsp?searchterm=clearance">Clearance</a></li>
@@ -72,6 +73,13 @@
                 out.println("<li>"+one.getCategory()+"</li>");
                 out.println("<li>"+one.getAvailable()+"</li>");
                 out.println("<li>"+one.getPID()+"</li>");
+                out.println("<li>"+one.getDescription()+"</li>");
+              %>
+              <form action="controller?action=addtocart&PID=<%=one.getPID()%>" method="post">
+                  <input type="submit" value="Add to Cart" id="add"/>
+              </form>
+               
+             <%
               }
                             
             %>

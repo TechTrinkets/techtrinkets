@@ -4,6 +4,9 @@
     Author     : Student_User
 --%>
 
+<%@page import="model.Product"%>
+<%@page import="model.SearchRequest"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -44,7 +47,21 @@
             </div>
 
             <div id="content">
-                List of Products in Cart goes here!!!! 
+                <%
+                  
+                ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
+                SearchRequest sr = new SearchRequest();
+                for(int i: cartItems)
+                {
+                    Product p = sr.productInfo(i);
+                    out.println("<li>"+p.getName()+"</li>");
+                    out.println("<li>"+p.getPrice()+"</li>");
+                    out.println("<li>"+p.getCategory()+"</li>");
+                    out.println("<li>"+p.getAvailable()+"</li>");
+                    out.println("<li>"+p.getPID()+"</li>");
+                }
+                
+                %>
         
             </div>
 
