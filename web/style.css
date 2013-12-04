@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 html {
-    font-family: "Helvetica";
+    font-family: "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
 #container {
@@ -19,41 +19,43 @@ html {
 }
 
 #logo {
-    height:70px;
+    height:110px;
 }
 
 #logodiv {
     background-color:#FFFFFF;
-    width:150px;
-    padding: 30px;
+    width:160px;
+    padding: 25px;
     float:left;
 }
 
 #search {
     background-color:#FFFFFF;
     padding: 20px;
-    width:750px;
-    height:94px;
+    width:740px;
+    height:124px;
     float:left;
     text-align: center;
     vertical-align:middle;
 }
 
 #searchform {
-    height:22px;
+    height:25px;
     width:300px;
-    font: 16px 'Arial';
+    font: 18px "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
 #searchbutton {
-    height: 30px;
+    height: 35px;
+    width: 100px;
+    font: 18px "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
 #header {
     margin-bottom:0;
     background-color:#FFFFFF;
     text-align: right;
-    font: 14px "Arial";
+    font: 14px "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
 #menu {
@@ -62,12 +64,13 @@ html {
     width:150px;
     padding: 30px;
     float:left;
+    te
 }
 
 #content {
     background-color:#FFFFFF;
     height:500px;
-    width:700px;
+    width:690px;
     padding: 20px;
     float:left;
     margin-left: 30px;
@@ -78,5 +81,20 @@ html {
     height: 50px;
     clear:both;
     text-align:center;
-    font: 12px "Arial";
+    font: 12px "Lucida Sans", "Lucida Grande", sans-serif;
+}
+
+a:link {
+    color: #937BAF;
+}
+a:hover {
+    color: #E0CC2B;
+}
+a:visited {
+    color: #937BAF;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
 }

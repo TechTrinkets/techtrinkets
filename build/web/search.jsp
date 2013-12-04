@@ -16,7 +16,11 @@
         <title>Search Results</title>
     </head>
     <body>
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 5c3a6bb91c1271839772a4566e480b66bd0ead95
         <div id="container">
 
             <%@include file="header.jsp" %>
@@ -33,9 +37,10 @@
                 out.println("<p>Sorry your search didn't return any products.</p>");
             else
             {
-                out.println("<p>Result</p>");
+                out.println("<p>Results:</p> <table> <tr>");
                 for(Product p: result)
                 {
+<<<<<<< HEAD
                     //out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
                     //       p.getImagePath()+"'/></a>");
                     out.println("<li><a href='productinfo.jsp?PID="+p.getPID()+"'>"+p.getName()+"</a></li>");
@@ -44,12 +49,21 @@
                     out.println("<li>"+p.getAvailable()+"</li>");
                     out.println("<li>"+p.getPID()+"</li>");
                     out.println("<li>"+p.getDescription()+"</li>");
+=======
+                    out.println("<td>");
+                    out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
+                           p.getImage()+"'/></a> <br /><br />");
+                    out.println(p.getName()+"<br />");
+                    out.println(p.getPrice()+"<br />");
+>>>>>>> 5c3a6bb91c1271839772a4566e480b66bd0ead95
                     %>
                     <form action="controller?action=addtocart&PID=<%=p.getPID()%>" method="post">
                     <input type="submit" value="Add to Cart" id="add"/>
                     </form>
                     <%
+                out.println("<td>");
                 }
+                out.println("</tr></table>");
             }
         %>    
             

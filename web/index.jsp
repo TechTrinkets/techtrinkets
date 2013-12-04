@@ -20,49 +20,10 @@
 
         <div id="container">
 
-<<<<<<< HEAD
             <%@include file="header.jsp" %>
-                        
-=======
-            <div id="header">
-                
-                <%
-                    if( session.getAttribute("loggedin") != null)
-                    {
-                        if( session.getAttribute("loggedin").equals(true) &&
-                                session.getAttribute("userid") != null)
-                        out.print("Welcome, "+session.getAttribute("userid"));
-                    }
-                    else
-                    {
-                %>    
-                Welcome, Guest - <a href="login.jsp">Sign In</a> - <a href="register.jsp">Register</a>- 
-                Shopping Cart (0) <hr />
-                <%  } %>
-            </div>
-            <div id="logodiv">
-                <a href="#home">
-                    <img src="images/techtrinkets.png" id="logo" alt="Tech Trinkets" />
-                </a>
-            </div>
-            <div id="search"> <br /><br />
-                <form action="controller?action=search" method="post">
-                    <input type="text" id="searchterm" name="searchterm"/>
-                    <input type="submit" value="Search" id="searchbutton"/>
-                </form>
-            </div>
-            <div id="menu">
-                Browse By Type:
-                <ul>
-                    <li><a href="search.jsp?searchterm=tshirt">T-Shirts</a></li>
-                    <li><a href="search.jsp?searchterm=gadgets">Gadgets</a></li>
-                    <li><a href="search.jsp?searchterm=home">Home & Office</a></li>
-                    <li><a href="search.jsp?searchterm=toys">Toys</a></li>
-                    <li><a href="search.jsp?searchterm=clearance">Clearance</a></li>
-                    <li><a href="search.jsp?searchterm=allproducts">All Products</a></li>
-                </ul>
-            </div>
->>>>>>> 431fa2434c1d81f24768b7abb19d7be35864365b
+
+
+
             <div id="content">
                 Featured item:
                

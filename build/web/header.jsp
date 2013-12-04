@@ -40,17 +40,18 @@
                 %>
             </div>
             <div id="logodiv">
-                <a href="#home">
+                <a href="index.jsp">
                     <img src="images/techtrinkets.png" id="logo" alt="Tech Trinkets" />
                 </a>
             </div>
             <div id="search"> <br /><br />
                 <form action="controller?action=search" method="post">
-                    <input type="text" id="searchterm" name="searchterm"/>
+                    <input type="text" id="searchform" name="searchterm"/>
                     <input type="submit" value="Search" id="searchbutton"/>
                 </form>
             </div>
             <div id="menu">
+<<<<<<< HEAD
                 Browse By Type:
                 <ul>
                     <li><a href="search.jsp?searchterm=tshirt">T-Shirts</a></li>
@@ -59,6 +60,15 @@
                     <li><a href="search.jsp?searchterm=toys">Toys</a></li>
                     <li><a href="search.jsp?searchterm=clearance">Clearance</a></li>
                     <li><a href="search.jsp?searchterm=allproducts">All Products</a></li>
+=======
+                Browse By Type:<br /><br />
+                <a href="search.jsp?searchterm=tshirt">T-Shirts</a> <br />
+                <a href="search.jsp?searchterm=gadgets">Gadgets</a><br />
+                <a href="search.jsp?searchterm=homeoffice">Home & Office</a><br />
+                <a href="search.jsp?searchterm=toys">Toys</a><br />
+                <a href="search.jsp?searchterm=clearance">Clearance</a><br />
+                <a href="search.jsp?searchterm=allproducts">All Products</a><br />
+>>>>>>> 5c3a6bb91c1271839772a4566e480b66bd0ead95
                 </ul>
             </div>
     </body>
