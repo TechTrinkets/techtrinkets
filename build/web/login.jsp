@@ -47,9 +47,9 @@
         <h2>Log in to your account:</h2>
         <form action="controller?action=login" method="post">
             User Name: <input type="text" name="username"> <br />
-            Password: <input type="password" name="pwd">
-            <p><input type="submit" value="Submit"></p>
-            
+            Password: <input type="password" name="pwd"> <br />
+            <input type="submit" value="Submit"> 
+                
             <h2>Create a new account:</h2>
                 
                 <form action="#something">
@@ -61,7 +61,10 @@
                     <input type="checkbox" name="terms" />I agree to the <a href="#terms">terms</a>. <br /><br />
                     <input type="submit" name="submit" alt="Submit" />
                 </form>
-        </form>
+        </form> <br />
+        
+        <button onclick="location.href='forgotpassword.jsp'">
+                Forgot Password?</button>
         
    </div>
 
