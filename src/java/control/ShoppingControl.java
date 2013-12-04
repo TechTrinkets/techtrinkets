@@ -71,7 +71,18 @@ public class ShoppingControl extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         System.out.println("do get");
-        processRequest(request, response);
+        if (request.getParameter("action") != null && 
+                request.getParameter("action").equals("logout"))
+        {
+           System.out.println("log out");
+           HttpSession session = request.getSession(true);
+           session.setAttribute("loggedin", new Boolean(false));
+           session.setAttribute("userid", null);
+           session.setAttribute("cartitems", null);
+           forwardRequest(request, response, "/index.jsp");
+           
+        }
+        //processRequest(request, response);
     }
 
     /**

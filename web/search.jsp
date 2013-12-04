@@ -16,8 +16,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
         
+        <div id="container">
+
+            <%@include file="header.jsp" %>
+                        
+            <div id="content">
+                    
         <%
             SearchRequest sr = new SearchRequest();
             String searchterms = request.getParameter("searchterm");
@@ -48,6 +53,11 @@
             }
         %>    
             
+            </div>
+
+            <div id="footer">
+                Copyright 2013 Tech Trinkets, Inc. All Rights Reserved. User Agreement and Privacy Policy.</div>
+        </div>
         
     </body>
 </html>

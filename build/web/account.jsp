@@ -54,6 +54,18 @@
                     {
                         String username = (String)session.getAttribute("userid");
                         User u = ur.getUser(username);
+                        
+                        out.println("<li>"+u.getFirstName()+"</li>");
+                        out.println("<li>"+u.getLastName()+"</li>");
+                        out.println("<li>"+u.getStreetAddress()+"</li>");
+                        out.println("<li>"+u.getCity()+"</li>");
+                        out.println("<li>"+u.getState()+"</li>");
+                        out.println("<li>"+u.getEmail()+"</li>");
+                        out.println("<li>"+u.getUID()+"</li>");
+                        out.println("<li>"+u.getZipCode()+"</li>");
+                        out.println("<li>"+u.getPhoneNumber()+"</li>");
+                        
+                        
                     }
                     else
                     {

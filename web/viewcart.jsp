@@ -49,18 +49,23 @@
             <div id="content">
                 <%
                   
-                ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
-                SearchRequest sr = new SearchRequest();
-                for(int i: cartItems)
+                if( session.getAttribute("cartitems") != null)
                 {
-                    Product p = sr.productInfo(i);
-                    out.println("<li>"+p.getName()+"</li>");
-                    out.println("<li>"+p.getPrice()+"</li>");
-                    out.println("<li>"+p.getCategory()+"</li>");
-                    out.println("<li>"+p.getAvailable()+"</li>");
-                    out.println("<li>"+p.getPID()+"</li>");
-                }
+                    ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
                 
+                    SearchRequest sr = new SearchRequest();
+                    for(int i: cartItems)
+                    {
+                        Product p = sr.productInfo(i);
+                        out.println("<li>"+p.getName()+"</li>");
+                        out.println("<li>"+p.getPrice()+"</li>");
+                        out.println("<li>"+p.getCategory()+"</li>");
+                        out.println("<li>"+p.getAvailable()+"</li>");
+                        out.println("<li>"+p.getPID()+"</li>");
+                    }
+                }
+                else
+                    out.println("<p>You have no items in your cart</p>");
                 %>
         
             </div>

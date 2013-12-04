@@ -27,11 +27,7 @@ public class SearchRequest {
       try {
          DBQueryHandler dbQueHand = new DBQueryHandler();
          ResultSet rs = dbQueHand.doQuery(query);
-         ResultSetMetaData rsmd = rs.getMetaData();
-         
-         //int numCols = rsmd.getColumnCount();
-         //result.add(new Integer(numCols));
-         
+          
          while (rs.next()) {
             int i = 1;
             int PID = rs.getInt(i++);
