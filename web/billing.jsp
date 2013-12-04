@@ -13,5 +13,15 @@
     </head>
     <body>
         <h1>Hello World!</h1>
+        
+        <form action="controller?action=billing" method="post">
+            
+            <input type="submit" value="Continue"/>
+        </form>
+        
+        <%
+            //getUser(String user)
+        %>
+        
     </body>
 </html>

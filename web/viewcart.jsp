@@ -20,33 +20,11 @@
 
         <div id="container">
 
-            <div id="header">
-                Welcome, Guest - <a href="login.jsp">Sign In</a> - <a href="register.jsp">Register</a> - Shopping Cart (0) <hr />
-            </div>
-            <div id="logodiv">
-                <a href="#home">
-                    <img src="images/techtrinkets.png" id="logo" alt="Tech Trinkets" />
-                </a>
-            </div>
-            <div id="search"> <br /><br />
-                <form>
-                    <input type="text" id="searchform" />&nbsp;
-                    <input type="submit" value="Search!" id="searchbutton" alt="Search!" />
-                </form>
-            </div>
-            <div id="menu">
-                Browse By Type:
-                <ul>
-                    <li><a href="#tshirts">T-Shirts</a></li>
-                    <li><a href="#Appliances">Appliances</a></li>
-                    <li><a href="#homeoffice">Home & Office</a></li>
-                    <li><a href="#toys">Toys</a></li>
-                    <li><a href="#clearance">Clearance</a></li>
-                    <li><a href="#allproducts">All Products</a></li>
-                </ul>
-            </div>
-
+            <%@include file="header.jsp" %>
+                        
             <div id="content">
+
+            
                 <%
                   
                 if( session.getAttribute("cartitems") != null)
@@ -63,6 +41,12 @@
                         out.println("<li>"+p.getAvailable()+"</li>");
                         out.println("<li>"+p.getPID()+"</li>");
                     }
+                %>
+                <form action="controller?action=checkout" method="post">
+                    <input type="submit" value="Check out"/>
+                </form>
+                <%
+                    
                 }
                 else
                     out.println("<p>You have no items in your cart</p>");

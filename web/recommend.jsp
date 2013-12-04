@@ -4,6 +4,7 @@
     Author     : Student_User
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page import="model.Product"%>
 <%@page import="model.SearchRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,7 +16,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-      
+      <div id="container">
+
+            <%@include file="header.jsp" %>
+                        
+            <div id="content">
         
         <%
             //Is this the cart page too??
@@ -37,21 +42,37 @@
                 out.println("<li>"+p.getPID()+"</li>");
               }
                       
-            /*
-            Product recommend = sr.search(p.getCategory());
-            if(recommend != null)
-              {
-                out.println("<p>We recommend:</p>");
-                out.println("<li>"+recommend.getName()+"</li>");
-                out.println("<li>"+recommend.getPrice()+"</li>");
-                out.println("<li>"+recommend.getCategory()+"</li>");
-                out.println("<li>"+recommend.getAvailable()+"</li>");
-                out.println("<li>"+recommend.getPID()+"</li>");
-              }
-              */
+            
+            ArrayList<Product> all_recommend = sr.search(p.getCategory()); //not working right :(
+            if(all_recommend != null)
+            {    
+                
+                for(Product recommend : all_recommend)
+                {
+                    if(recommend.getPID() != p.getPID())
+                    {
+                        out.println("<p>We recommend:</p>");
+                        out.println("<li>"+recommend.getName()+"</li>");
+                        out.println("<li>"+recommend.getPrice()+"</li>");
+                        out.println("<li>"+recommend.getCategory()+"</li>");
+                        out.println("<li>"+recommend.getAvailable()+"</li>");
+                        out.println("<li>"+recommend.getPID()+"</li>");
+                        
+                        return;
+                    }
+                    out.println("same");
+                    
+                }
+            }
+            else
+                out.println("recommend null");
+            
+            
+              
             
         %>  
-        
+            </div>
+      </div>
     </body>
 </html>
 </jsp:useBean>
