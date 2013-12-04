@@ -97,11 +97,11 @@ a:visited {
 td {
     text-align: center;
     padding: 10px;
-    border-color:#000000;
-    border-width: 1px;
+    text-align: left;
 }
 
 #add {
     width:100px;
     height: 30px;
+
 }

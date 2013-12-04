@@ -32,21 +32,22 @@
                     ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
                 
                     SearchRequest sr = new SearchRequest();
+                    out.println("Your Cart: <table>");
                     for(int i: cartItems)
                     {
+                        out.println("<tr><td>Product</td><td>In Stock?</td><td>Price</td></tr>");
                         Product p = sr.productInfo(i);
-                        out.println("<li>"+p.getName()+"</li>");
-                        out.println("<li>"+p.getPrice()+"</li>");
-                        out.println("<li>"+p.getCategory()+"</li>");
-                        out.println("<li>"+p.getAvailable()+"</li>");
-                        out.println("<li>"+p.getPID()+"</li>");
+                        out.println("<td>"+p.getName()+"</td>");
+                        out.println("<td>"+p.getAvailable()+"</td>");
+                        out.println("<td>$"+p.getPrice()+"</td>");
+                        out.println("</td></tr>");
                     }
                 %>
                 <form action="controller?action=checkout" method="post">
                     <input type="submit" value="Check out"/>
                 </form>
                 <%
-                    
+                    out.println("</table>");
                 }
                 else
                     out.println("<p>You have no items in your cart</p>");

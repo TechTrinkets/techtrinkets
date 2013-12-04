@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <title>JSP Page</title>
+        <title>Product Information</title>
     </head>
     <body>
         <div id="container">
@@ -32,8 +32,7 @@
                 out.println("<h2>"+one.getName()+"</h2></td></tr>");
                 
                 out.println("<table> <tr><td>");
-                out.println("<img src='images/"+
-                           one.getImage()+"' height=200px /> </td>");
+                out.println("<img src='images/"+ one.getImage()+"' height=200px /> </td>");
                 out.println("<td width=330px>"+one.getDescription()+"<br /><br />");
                 out.println("<strong>$"+one.getPrice()+"</strong><br /><br />");
                 if (one.getAvailable()) 
