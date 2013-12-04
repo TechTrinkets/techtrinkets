@@ -16,10 +16,6 @@
         <title>Search Results</title>
     </head>
     <body>
-<<<<<<< HEAD
-=======
-        <h1>Your Search Results:</h1>
->>>>>>> 431fa2434c1d81f24768b7abb19d7be35864365b
         
         <div id="container">
 
