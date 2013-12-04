@@ -46,9 +46,9 @@ html {
 }
 
 #searchbutton {
-    height: 100px;
+    height: 35px;
     width: 100px;
-    font: 20px "Lucida Sans", "Lucida Grande", sans-serif;
+    font: 18px "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
 #header {
@@ -92,4 +92,9 @@ a:hover {
 }
 a:visited {
     color: #937BAF;
+}
+
+td {
+    text-align: center;
+    padding: 10px;
 }

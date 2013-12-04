@@ -33,24 +33,22 @@
                 out.println("<p>Sorry your search didn't return any products.</p>");
             else
             {
-                out.println("<p>Results:</p> <table>");
+                out.println("<p>Results:</p> <table> <tr>");
                 for(Product p: result)
                 {
-                    //out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
-                    //       p.getImagePath()+"'/></a>");
-                    out.println("<li>"+p.getName()+"</li>");
-                    out.println("<li>"+p.getPrice()+"</li>");
-                    out.println("<li>"+p.getCategory()+"</li>");
-                    out.println("<li>"+p.getAvailable()+"</li>");
-                    out.println("<li>"+p.getPID()+"</li>");
-                    out.println("<li>"+p.getDescription()+"</li>");
+                    out.println("<td>");
+                    out.println("<a href=controller?product="+p.getPID()+"><img src='images/"+
+                           p.getImage()+"'/></a> <br /><br />");
+                    out.println(p.getName()+"<br />");
+                    out.println(p.getPrice()+"<br />");
                     %>
                     <form action="controller?action=addtocart&PID=<%=p.getPID()%>" method="post">
                     <input type="submit" value="Add to Cart" id="add"/>
                     </form>
                     <%
+                out.println("<td>");
                 }
-                out.println("</table>");
+                out.println("</tr></table>");
             }
         %>    
             
