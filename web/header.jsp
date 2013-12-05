@@ -34,7 +34,7 @@
                     {
                 %>
                         Welcome, Guest - <a href="login.jsp">Sign In</a> - <a href="register.jsp">Register</a>
-                        - <a href="viewcart.jsp">Shopping Cart</a> <hr />
+                        - <a href="viewcart.jsp">Shopping Cart</a>&nbsp;&nbsp;<hr />
                 <%  
                     } 
                 %>

@@ -51,10 +51,7 @@
             %>
             </div>
 
-            <div id="footer">
-                Copyright 2013 Tech Trinkets, Inc. All Rights Reserved. User Agreement and Privacy Policy.</div>
-
-        </div>
+            <%@include file="footer.jsp" %>
 
     </body>
 </html>
