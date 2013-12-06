@@ -133,3 +133,8 @@ td {
     text-align: right;
     
 }
+
+#error {
+    color:#FF0000;
+    
+}
