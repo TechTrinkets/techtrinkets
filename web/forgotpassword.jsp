@@ -26,13 +26,36 @@
         Just Answer your secret question!
         
         <%
-            UserRequest rq = new UserRequest(); //need the username? to make this request
-            out.println("<p>"+rq.requestQuestion()+"</p>");
+            
+            if(request.getParameter("forgot") != null)
+            {
+                if(request.getParameter("usernameforgot") != null)
+                {
+                    String username = request.getParameter("usernameforgot");
+                    UserRequest rq = new UserRequest();
+                    String sec_quest = rq.getRequestQuestion(username);
+                    out.println("<p>"+sec_quest+"</p>");
+         %> 
+                    <form action="controller?action=secretanswer" method="post">
+                    Answer: <input type="text" name="answer">
+                    <input type="submit" value="Submit">
+                    </form>
+         <%           
+                }
+                else
+                {    
+                    out.println("<p>Username not found</p>");
+                    
+                }
+            }
+            else
+            {
+                out.println("<p>Please try again</p>");
+                
+            }    
+            
         %>
-        <form action="controller?action=secretanswer" method="post">
-            Answer: <input type="text" name="answer">
-            <input type="submit" value="Submit">
-        </form>
+        
             </div>
         <%@include file="footer.jsp" %>
         </div>

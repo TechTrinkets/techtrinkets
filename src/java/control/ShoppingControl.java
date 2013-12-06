@@ -156,7 +156,23 @@ public class ShoppingControl extends HttpServlet {
            }
            else if( request.getParameter("action").equals("update"))
            {
+               forwardRequest(request, response, "/index.jsp");
+           }
+           else if( request.getParameter("action").equals("forgot"))
+           {
+               forwardRequest(request, response, "/forgotpassword.jsp");
+           }
+           else if( request.getParameter("action").equals("answer"))
+           {
+               HttpSession session = request.getSession(true);
+               String answer = (String)session.getAttribute("answer");
                
+               
+               UserRequest ur = new UserRequest();
+               //String answer = ur.getSecretAnswer();
+               //if()
+               
+               //forwardRequest(request, response, );
            }
         }
     }
