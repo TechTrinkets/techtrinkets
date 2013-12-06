@@ -14,13 +14,12 @@ import model.db.DBCommandHandler;
  */
 public class OrderUpdate {
 
-    public boolean addOrder(int oid, int uid, double total_price, String date, String time) {
+    public boolean addOrder(int uid, double total_price, String date, String time) {
 
         DBCommandHandler dbComHand = new DBCommandHandler();
-        String command = "INSERT INTO Orders (OID, UID, total_price, date, time)"
+        String command = "INSERT INTO Orders (UID, total_price, date, time)"
                 + "VALUES(";
-        command += oid;
-        command += "," + uid;
+        command += uid;
         command += "," + total_price;
         command += ", '" + date + "'";
         command += ", '" + time + "'";

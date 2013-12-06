@@ -6,7 +6,9 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.OrderRequest;
+import model.OrderUpdate;
 import model.Product;
 import model.SearchRequest;
 import model.User;
@@ -181,6 +185,7 @@ public class ShoppingControl extends HttpServlet {
           HttpServletResponse response) throws IOException, ServletException {
         
         HttpSession session = request.getSession(true);
+        Integer UID = (Integer)session.getAttribute("userid");
         
         ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
         double totalPrice = 0;
@@ -193,9 +198,26 @@ public class ShoppingControl extends HttpServlet {
             totalPrice = totalPrice + p.getPrice();             
         }
         
+        Date dNow = new Date( );
+        SimpleDateFormat d = new SimpleDateFormat ("yyyy.MM.dd");
+        SimpleDateFormat t = new SimpleDateFormat("hh:mm:ss a zzz");
+
+      
+        OrderUpdate o = new OrderUpdate();
+        OrderRequest r = new OrderRequest();
+        boolean addresult = o.addOrder(UID, totalPrice, d.format(dNow), t.format(dNow));
+        int OID = r.getOrderID(UID,totalPrice,d.format(dNow),t.format(dNow));
         
-        //Add to order table
-        //add to order product table
+        for(int i: cartItems)
+        {
+            if(o.addOrderProduct(OID,i,1) == false)
+            {
+                System.out.println("error adding");
+            }
+        }
+        
+       
+        
         
         session.setAttribute("cartitems", null);
         
