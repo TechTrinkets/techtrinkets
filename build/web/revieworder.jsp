@@ -4,6 +4,7 @@
     Author     : Rissy
 --%>
 
+<%@page import="java.text.NumberFormat"%>
 <%@page import="model.Product"%>
 <%@page import="model.SearchRequest"%>
 <%@page import="java.util.ArrayList"%>
@@ -17,6 +18,12 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
+        <div id="container">
+
+            <%@include file="header.jsp" %>
+                        
+            <div id="content">
         <h1>Your order</h1>
         
         <h2>Items</h2>
@@ -29,9 +36,10 @@
                     
                     SearchRequest sr = new SearchRequest();
                     out.println("<table>");
+                    out.println("<tr><td>Product</td><td>Price</td></tr>");
+                        
                     for(int i: cartItems)
                     {
-                        out.println("<tr><td>Product</td><td>Price</td></tr>");
                         Product p = sr.productInfo(i);
                         out.println("<td>"+p.getName()+"</td>");
                         out.println("<td>$"+p.getPrice()+"</td>");
@@ -39,7 +47,10 @@
                         totalPrice = totalPrice + p.getPrice();
                         
                     }
-                    out.println("<tr><td><b>Total<b/></td><td>"+totalPrice+"</td></tr>");
+                    NumberFormat nf = NumberFormat.getInstance();
+                    nf.setMaximumFractionDigits(2);
+                    nf.setMinimumFractionDigits(2);
+                    out.println("<tr><td><b>Total<b/></td><td>$"+nf.format(totalPrice)+"</td></tr>");
                     out.println("</table>");
                 }
                 else
@@ -62,13 +73,12 @@
             }
             else
             {
-                out.println(request.getParameter("bfirstname"));
-                out.println(request.getParameter("blastname"));
-                out.println(request.getParameter("bstreetadd"));
-                out.println(request.getParameter("bcity"));
-                out.println(request.getParameter("bstate"));
-                out.println(request.getParameter("bzipcode"));
-            
+                out.println("<p>"+request.getParameter("bfirstname")+" ");
+                out.println(request.getParameter("blastname")+"<br/>");
+                out.println(request.getParameter("bstreetadd")+"<br/>");
+                out.println(request.getParameter("bcity")+",");
+                out.println(request.getParameter("bstate")+" ");
+                out.println(request.getParameter("bzipcode")+"</p>");
             }
             
             
@@ -89,14 +99,13 @@
             }
             else
             {
-                out.println(request.getParameter("sfirstname"));
-                out.println(request.getParameter("slastname"));
-                out.println(request.getParameter("sstreetadd"));
-                out.println(request.getParameter("scity"));
-                out.println(request.getParameter("sstate"));
-                out.println(request.getParameter("szipcode"));
-                out.println(request.getParameter("sphonenum"));
-            
+                out.println("<p>"+request.getParameter("sfirstname")+" ");
+                out.println(request.getParameter("slastname")+"<br/>");
+                out.println(request.getParameter("sstreetadd")+"<br/>");
+                out.println(request.getParameter("scity")+",");
+                out.println(request.getParameter("sstate")+" ");
+                out.println(request.getParameter("szipcode")+"<br/>");
+                out.println(request.getParameter("sphonenum")+"</p>");
             }
             
             
@@ -107,6 +116,7 @@
             <input type="submit" value="Place Order">
         </form>
                
-        
+            </div>
+        </div>
     </body>
 </html>

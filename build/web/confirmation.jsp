@@ -1,7 +1,8 @@
 <%-- 
+<<<<<<< HEAD
     Document   : test
     Created on : Nov 27, 2013, 11:18:43 AM
-    Author     : Rissy
+    Author     : Marissa
 --%>
 
 <%@page import="model.User"%>
