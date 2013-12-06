@@ -39,7 +39,7 @@ public class OrderUpdate {
     public boolean addOrderProduct(int oid, int pid, int quantity){
         
         DBCommandHandler dbComHand = new DBCommandHandler();
-        String command = "INSERT INTO Orders (OID, PID, quantity)"
+        String command = "INSERT INTO Order_Product (OID, PID, quantity)"
                 + "VALUES(";
         command += oid;
         command += "," + pid;
