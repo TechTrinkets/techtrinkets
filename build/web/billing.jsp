@@ -45,7 +45,7 @@
          <%
                         out.println("<b>"+u.getFirstName()+" "+u.getLastName()+"</b><br/>");
                         out.println(u.getStreetAddress()+"<br/>");
-                        out.println(u.getCity()+","+u.getState()+"<br/>");
+                        out.println(u.getCity()+", "+u.getState()+"<br/>");
                         out.println(u.getZipCode()+"<br/>");
                         out.println("Phone: "+u.getPhoneNumber()+"<br/>");
           %>

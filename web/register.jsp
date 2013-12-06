@@ -11,7 +11,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tech Trinkets</title>
+
         
         <script type="text/javascript">
                 function validate() {
@@ -143,7 +143,9 @@
                     return document.getElementById(id);
                 }
         </script>
-        
+
+        <title>Create an Account</title>
+
     </head>
     <body>
 
