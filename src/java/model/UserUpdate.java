@@ -14,7 +14,7 @@ import model.db.DBCommandHandler;
     * Add a user record
     */
    public boolean addUser(int UID, String firstName, String lastName,
-                  String city, String state, int zipCode, int phoneNum,
+                  String city, String state, int zipCode, String phoneNum,
                   String email, String password, String username, String sec_quest,
                   String sec_answer, String street) {
   
