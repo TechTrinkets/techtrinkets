@@ -160,26 +160,8 @@ public class ShoppingControl extends HttpServlet {
            else if( request.getParameter("action").equals("update"))
            {
                
-               
-               
            }
-           
-        
-        }   
-        else if( request.getParameter("secretanswer") != null)
-        {
-            String secretanswer = request.getParameter("answer");
-            UserRequest ur = new UserRequest();
-            if( secretanswer.compareTo(ur.requestAnswer()) == 0)
-            {
-                // it's a match! log them in
-            }
-            else
-            {
-                //error message
-            }
         }
-     
     }
     
     private void handleSubmitOrder(HttpServletRequest request,

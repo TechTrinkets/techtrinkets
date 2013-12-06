@@ -95,60 +95,6 @@ public class UserRequest{
       return result;     
    }
    
-   public String requestQuestion(){
-      String query = "select question from user where username = 'test123'";
-      String result = "";
-      
-      try {
-         DBQueryHandler dbQueHand = new DBQueryHandler();
-         ResultSet rs = dbQueHand.doQuery(query);
-         ResultSetMetaData rsmd = rs.getMetaData();
-         
-         int numCols = rsmd.getColumnCount();
-         if( numCols == 1)
-         {
-            if(rs.next())
-                result = rs.getString(0);
-         }
-         else
-         {
-             //something went wrong
-         }
-         dbQueHand.close();
-      } catch (SQLException e) {
-         e.printStackTrace();
-      }
-      
-      return result;
-   }
-   
-   public String requestAnswer(){
-       String query = "select answer from user where username = 'test123'";
-      String result = "";
-      
-      try {
-         DBQueryHandler dbQueHand = new DBQueryHandler();
-         ResultSet rs = dbQueHand.doQuery(query);
-         ResultSetMetaData rsmd = rs.getMetaData();
-         
-         int numCols = rsmd.getColumnCount();
-         if( numCols == 1)
-         {
-            if(rs.next())
-                result = rs.getString(0);
-         }
-         else
-         {
-             //something went wrong
-         }
-         dbQueHand.close();
-      } catch (SQLException e) {
-         e.printStackTrace();
-      }
-      
-      return result;
-   }
-   
    public int getUserID(String username) {
 
         int result = 0;
