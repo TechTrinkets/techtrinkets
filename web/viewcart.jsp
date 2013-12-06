@@ -47,12 +47,15 @@
 
                 <%
                         out.println("</table>");
+                %>        
+                        <form action="controller?action=checkout" method="post">
+                        <input type="submit" value="Check out"/>
+                        </form>
+                <%
                     } else
                         out.println("<p>You have no items in your cart</p>");
                 %>
-                <form action="controller?action=checkout" method="post">
-                    <input type="submit" value="Check out"/>
-                </form>
+                
             </div>
 
             <%@include file="footer.jsp" %>

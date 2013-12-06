@@ -149,16 +149,13 @@
                     }
          %>
               
-<<<<<<< HEAD
+
             <input type="submit" value="Continue"/>
         </form>
                 </div>
             <%@include file="footer.jsp" %>
         </div>
-=======
-
-            </div>
->>>>>>> bfa9ccfe7d4f9700d7be903bb61180f88d9204bc
         </div>
+      
     </body>
 </html>
