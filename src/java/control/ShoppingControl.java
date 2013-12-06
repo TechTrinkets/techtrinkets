@@ -257,9 +257,14 @@ public class ShoppingControl extends HttpServlet {
             
            if( !successAdd )
            { // could not add to db
+               forwardRequest(request, response, "/register.jsp");
            }
            else
            {    //user created confirmation page
+               HttpSession session = request.getSession(true);
+                session.setAttribute("loggedin", new Boolean(true));
+                session.setAttribute("userid", username);
+               forwardRequest(request, response, "/accountcreated.jsp");
            }
            
     }

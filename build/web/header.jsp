@@ -54,11 +54,11 @@
 
                 Browse By Type:<br /><br />
                 <a href="search.jsp?searchterm=Apparel">Apparel</a> <br />
-                <a href="search.jsp?searchterm=gadgets">Gadgets</a><br />
-                <a href="search.jsp?searchterm=home">Home & Office</a><br />
-                <a href="search.jsp?searchterm=toys">Toys</a><br />
-                <a href="search.jsp?searchterm=clearance">Clearance</a><br />
-                <a href="search.jsp?searchterm=allproducts">All Products</a><br />
+                <a href="search.jsp?searchterm=Gadgets">Gadgets</a><br />
+                <a href="search.jsp?searchterm=Home">Home</a><br />
+                <a href="search.jsp?searchterm=Toys">Toys</a><br />
+                <a href="search.jsp?searchterm=Clearance">Clearance</a><br />
+                <a href="search.jsp?searchterm=All">All</a><br />
                 </ul>
             </div>
     </body>

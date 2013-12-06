@@ -59,7 +59,7 @@ public class SearchRequest {
         if(Pattern.matches("^[a-zA-Z]+$", searchterms))
         {
             System.out.println("Pattern matches");
-	    if(searchterms.compareTo("allproducts")==0)
+	    if(searchterms.compareTo("All")==0)
 	        return getProductTable();
 	    else
 	    {
