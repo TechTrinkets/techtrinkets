@@ -52,6 +52,10 @@
                             out.println("<td>Delete</td>");
                             out.println("<td>$" + nf.format(p.getPrice()) + "</td>");
                             subtotal += p.getPrice();
+                            
+                            out.println("<form action=\"controller?action=delete method=\"post\" >");
+                            out.println("<td><p><input type\"submit\" value=\"Delete?\" name=\"action\" ></p></td>");
+                            out.println("</form");
 
                             out.println("</tr>");
                         }
