@@ -3,7 +3,7 @@
     Created on : Dec 2, 2013, 9:00:05 AM
     Author     : Student_User
 --%>
-
+<%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="model.Product"%>
@@ -36,7 +36,10 @@
                         out.println("<h2>Your Cart:</h2><table id=\"cart\">");
                         out.println("<tr id=\"cartheader\"><td>Product</td><td>In Stock?</td><td>Price</td><td></td></tr>");
                         Collections.sort(cartItems);
-                        
+                        NumberFormat nf = NumberFormat.getInstance();
+                        nf.setMaximumFractionDigits(2);
+                        nf.setMinimumFractionDigits(2);
+
                         for (int i : cartItems) {
                             Product p = sr.productInfo(i);
                             
@@ -47,7 +50,8 @@
                             else {
                                 out.println("<td><img src=\"images/x.png\" /></td>");
                             }
-                            out.println("<td>$" + p.getPrice() + "</td>");
+                            
+                            out.println("<td>$" + nf.format(p.getPrice()) + "</td>");
                             subtotal += p.getPrice();
                             out.println("<td>Delete?</td>");
                             out.println("</tr>");
@@ -57,7 +61,7 @@
                 <%
                         out.println("</table>");
 
-                        out.println("<p>Subtotal: $" + subtotal +"</p>");
+                        out.println("<p>Subtotal: $" + nf.format(subtotal) +"</p>");
 
                 %>        
                         <form action="controller?action=checkout" method="post">

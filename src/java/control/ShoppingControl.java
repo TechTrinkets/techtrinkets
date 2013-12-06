@@ -140,7 +140,7 @@ public class ShoppingControl extends HttpServlet {
                     newItem.add(pid);
                     session.setAttribute("cartitems", newItem);
                 }
-                forwardRequest(request, response, "/recommend.jsp");                
+                response.sendRedirect("viewcart.jsp");               
            }
            else if( request.getParameter("action").equals("checkout"))
            {
