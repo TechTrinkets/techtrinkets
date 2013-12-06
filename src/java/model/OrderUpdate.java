@@ -55,5 +55,18 @@ public class OrderUpdate {
         }
         
     }
+    
+    public boolean deleteOrder(int oid) {
+      DBCommandHandler dbComHand = new DBCommandHandler();
+      try {
+         String command = "DELETE FROM Orders WHERE OID ='" + oid + "'";
+         int result = dbComHand.doCommand(command);
+         dbComHand.close();
+         return (result > 0);
+      } catch (SQLException ex) {
+         ex.printStackTrace();
+         return false;
+      }
+   }
     //after an order is submitted, needs to be added to orders table
 }

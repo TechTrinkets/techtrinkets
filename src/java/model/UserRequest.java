@@ -1,4 +1,4 @@
-package model;
+package model;  
 
 import java.util.*;
 import java.sql.*;
@@ -57,7 +57,6 @@ public class UserRequest{
       String query = "SELECT * FROM Users WHERE username='"+user+"'";
       User result = null;
      
-      
       try {
          DBQueryHandler dbQueHand = new DBQueryHandler();
          ResultSet rs = dbQueHand.doQuery(query);

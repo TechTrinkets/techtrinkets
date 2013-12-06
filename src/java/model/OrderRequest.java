@@ -9,21 +9,20 @@ import model.db.DBQueryHandler;
  * Handle requests for order information
  * @author Allen
  */
- 
-public class OrderRequest{
+public class OrderRequest {
 
     public ArrayList<Object> getOrderTable() {
         String query = "SELECT * FROM Orders;";
         ArrayList<Object> result = new ArrayList<Object>();
-        
+
         try {
             DBQueryHandler dbQueHand = new DBQueryHandler();
             ResultSet rs = dbQueHand.doQuery(query);
             ResultSetMetaData rsmd = rs.getMetaData();
-           
+
             int numCols = rsmd.getColumnCount();
             result.add(new Integer(numCols));
-           
+
             while (rs.next()) {
                 int i = 1;
                 int OID = rs.getInt(i++);
@@ -31,31 +30,30 @@ public class OrderRequest{
                 double totalPrice = rs.getDouble(i++);
                 String date = rs.getString(i++);
                 String time = rs.getString(i++);
-              
+
                 Order order = new Order(OID, UID, totalPrice, date, time);
                 result.add(order);
             }
-           
-           dbQueHand.close();
+
+            dbQueHand.close();
         } catch (SQLException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
-        
+
         return result;
     }
-    
+
     public ArrayList<Order> getOrder(int oid) {
-     
+
         ArrayList<Order> result = new ArrayList<Order>();
-        
-        if(Pattern.matches("^[0-9]+$", String.valueOf(oid)))
-        {
-            String query = "SELECT * FROM Orders WHERE OID="+ oid + ";";
-            
+
+        if (Pattern.matches("^[0-9]+$", String.valueOf(oid))) {
+            String query = "SELECT * FROM Orders WHERE OID=" + oid + ";";
+
             try {
                 DBQueryHandler dbQueHand = new DBQueryHandler();
                 ResultSet rs = dbQueHand.doQuery(query);
-                
+
                 while (rs.next()) {
                     int i = 1;
                     int OID = rs.getInt(i++);
@@ -64,7 +62,7 @@ public class OrderRequest{
                     String date = rs.getString(i++);
                     String time = rs.getString(i++);
                     Order order = new Order(OID, UID, totalPrice, date, time);
-                    result.add(order); 
+                    result.add(order);
                 }
                 dbQueHand.close();
             } catch (SQLException e) {
@@ -73,5 +71,25 @@ public class OrderRequest{
         }
         return result;
     }//getOrder
-    
+
+    public int getOrderID(int uid, double totalPrice, String date, String time) {
+
+        int result = 0;
+        String query = "SELECT oid FROM Orders WHERE UID=" + uid
+                + "AND total_price=" + totalPrice + "AND date='" + date
+                + "' AND time='" + time + "');";
+
+        try {
+            DBQueryHandler dbQueHand = new DBQueryHandler();
+            ResultSet rs = dbQueHand.doQuery(query);
+
+            result = rs.getInt(1);
+            
+            dbQueHand.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }
