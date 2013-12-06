@@ -21,7 +21,7 @@ public class OrderUpdate {
                 + "VALUES(";
         command += uid;
         command += "," + total_price;
-        command += ", '" + date + "'";
+        command += " , '" + date + "'";
         command += ", '" + time + "'";
         command += ");";
 

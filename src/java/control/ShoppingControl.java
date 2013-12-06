@@ -185,7 +185,11 @@ public class ShoppingControl extends HttpServlet {
           HttpServletResponse response) throws IOException, ServletException {
         
         HttpSession session = request.getSession(true);
-        Integer UID = (Integer)session.getAttribute("userid");
+        String username = (String)session.getAttribute("userid");
+        
+        OrderUpdate o = new OrderUpdate();
+        OrderRequest r = new OrderRequest();
+        UserRequest ur = new UserRequest();
         
         ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
         double totalPrice = 0;
@@ -201,10 +205,9 @@ public class ShoppingControl extends HttpServlet {
         Date dNow = new Date( );
         SimpleDateFormat d = new SimpleDateFormat ("yyyy.MM.dd");
         SimpleDateFormat t = new SimpleDateFormat("hh:mm:ss a zzz");
-
+        Integer UID = ur.getUserID(username);
       
-        OrderUpdate o = new OrderUpdate();
-        OrderRequest r = new OrderRequest();
+        
         boolean addresult = o.addOrder(UID, totalPrice, d.format(dNow), t.format(dNow));
         int OID = r.getOrderID(UID,totalPrice,d.format(dNow),t.format(dNow));
         
