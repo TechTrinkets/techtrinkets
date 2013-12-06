@@ -1,21 +1,31 @@
-<%-- 
-    Document   : billing
-    Created on : Nov 27, 2013, 12:04:58 PM
+
+        <%-- 
+    Document   : test
+    Created on : Nov 27, 2013, 11:18:43 AM
     Author     : Rissy
 --%>
 
 <%@page import="model.User"%>
 <%@page import="model.UserRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Tech Trinkets</title>
     </head>
     <body>
-        <h1>Billing Information</h1>
-        
+
+        <div id="container">
+
+            <%@include file="header.jsp" %>
+
+
+            <div id="content">
+                <h2>Billing Information:</h2>
+                <div class="billing">
         <%
                     UserRequest ur = new UserRequest();
                     if( session.getAttribute("loggedin").equals(true))
@@ -136,6 +146,9 @@
               
             <input type="submit" value="Continue"/>
         </form>
-        
+                </div>
+            <%@include file="footer.jsp" %>
+        </div>
+        </div>
     </body>
 </html>

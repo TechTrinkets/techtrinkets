@@ -102,5 +102,9 @@ td {
 #add {
     width:100px;
     height: 30px;
+}
 
+.billing {
+    border: 1px black;
+    
 }
