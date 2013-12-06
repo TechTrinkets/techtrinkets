@@ -4,6 +4,8 @@
     Author     : Student_User
 --%>
 
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.Arrays"%>
 <%@page import="model.Product"%>
 <%@page import="model.SearchRequest"%>
 <%@page import="java.util.ArrayList"%>
@@ -26,20 +28,27 @@
 
 
                 <%
-
+                    double subtotal = 0.0;
                     if (session.getAttribute("cartitems") != null) {
                         ArrayList<Integer> cartItems = (ArrayList<Integer>) session.getAttribute("cartitems");
-
+                        
                         SearchRequest sr = new SearchRequest();
-                        out.println("Your Cart: <br /><table id=\"cart\">");
+                        out.println("<h2>Your Cart:</h2><table id=\"cart\">");
                         out.println("<tr id=\"cartheader\"><td>Product</td><td>In Stock?</td><td>Price</td><td></td></tr>");
-
+                        Collections.sort(cartItems);
+                        
                         for (int i : cartItems) {
                             Product p = sr.productInfo(i);
                             
-                            out.println("<td>" + p.getName() + "</td>");
-                            out.println("<td>" + p.getAvailable() + "</td>");
+                            out.println("<td><a href=productinfo.jsp?PID="+p.getPID()+">" + p.getName() + "</a></td>");
+                            if (p.getAvailable()) {
+                                out.println("<td><img src=\"images/check.png\" /></td>");
+                            }
+                            else {
+                                out.println("<td><img src=\"images/x.png\" /></td>");
+                            }
                             out.println("<td>$" + p.getPrice() + "</td>");
+                            subtotal += p.getPrice();
                             out.println("<td>Delete?</td>");
                             out.println("</tr>");
                         }
@@ -47,6 +56,7 @@
 
                 <%
                         out.println("</table>");
+                        out.println("<p>Subtotal: $" + subtotal +"</p>");
                     } else
                         out.println("<p>You have no items in your cart</p>");
                 %>

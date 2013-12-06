@@ -117,14 +117,14 @@ a:visited {
     
 }
 
-#cart, tr {
+#cart {
     border: 1px solid black;
     border-collapse:collapse;
-    width: 650px;
+    width: inherit;
 
 }
 
 td {
         padding: 8px;
-    
+        text-align: left;
 }
