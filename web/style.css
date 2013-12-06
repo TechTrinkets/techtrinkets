@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 
 html {
-    font-family: "Lucida Sans", "Lucida Grande", sans-serif;
+    font: 15px "Lucida Sans", "Lucida Grande", sans-serif;
 }
 
 #container {
@@ -95,8 +95,8 @@ a:visited {
 
 td {
     text-align: center;
-    padding: 10px;
-    text-align: center;
+    padding: 20px;
+    width: 300px;
 }
 
 #add {

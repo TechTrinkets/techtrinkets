@@ -53,7 +53,7 @@
             <div id="menu">
 
                 Browse By Type:<br /><br />
-                <a href="search.jsp?searchterm=tshirt">T-Shirts</a> <br />
+                <a href="search.jsp?searchterm=Apparel">Apparel</a> <br />
                 <a href="search.jsp?searchterm=gadgets">Gadgets</a><br />
                 <a href="search.jsp?searchterm=home">Home & Office</a><br />
                 <a href="search.jsp?searchterm=toys">Toys</a><br />
