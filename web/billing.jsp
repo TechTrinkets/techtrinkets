@@ -24,7 +24,6 @@
 
 
             <div id="content">
-                <h2>Billing Information:</h2>
                 <div class="billing">
 
         <%
@@ -32,7 +31,7 @@
                     if( session.getAttribute("loggedin") != null && session.getAttribute("loggedin").equals(true))
                     {
                     
-                        out.println("<h1>Billing Information</h1>");
+                        out.println("<h2>Billing Information</h2>");
                         String username = (String)session.getAttribute("userid");
                         User u = ur.getUser(username);
         %>
@@ -141,10 +140,10 @@
                     else
                     {
          %>              
-                        <h1>
-                        Please <a href="login.jsp">log in</a> or
-                        <a href="register.jsp">create an account</a> first
-                        </h1>
+                        <h3>
+                        Wait! Please <a href="login.jsp">log in</a> or
+                        <a href="register.jsp">create an account</a> first.
+                        </h3>
          <%         
                     }
          %>

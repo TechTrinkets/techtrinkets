@@ -70,7 +70,7 @@
                 <%
 
                     } else
-                        out.println("<p>You have no items in your cart.</p>");
+                        out.println("<h3>You have no items in your cart.</h3>");
                 %>
                 
             </div>
