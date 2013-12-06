@@ -33,14 +33,15 @@
                 
                     SearchRequest sr = new SearchRequest();
                     out.println("Your Cart: <table>");
+                    out.println("<tr><td><b>Product</b></td><td><b>In Stock?</b></td><td><b>Price</b></td></tr>");
+                        
                     for(int i: cartItems)
                     {
-                        out.println("<tr><td>Product</td><td>In Stock?</td><td>Price</td></tr>");
                         Product p = sr.productInfo(i);
-                        out.println("<td>"+p.getName()+"</td>");
+                        out.println("<tr><td>"+p.getName()+"</td>");
                         out.println("<td>"+p.getAvailable()+"</td>");
                         out.println("<td>$"+p.getPrice()+"</td>");
-                        out.println("</td></tr>");
+                        out.println("</tr>");
                     }
                 %>
                 <form action="controller?action=checkout" method="post">

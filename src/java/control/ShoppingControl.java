@@ -152,6 +152,12 @@ public class ShoppingControl extends HttpServlet {
                handleSubmitOrder(request, response);
            
            }
+           else if( request.getParameter("action").equals("update"))
+           {
+               
+               
+               
+           }
            
         
         }   
@@ -187,8 +193,11 @@ public class ShoppingControl extends HttpServlet {
             totalPrice = totalPrice + p.getPrice();             
         }
         
+        
         //Add to order table
         //add to order product table
+        
+        session.setAttribute("cartitems", null);
         
         forwardRequest(request, response, "/confirmation.jsp");
         

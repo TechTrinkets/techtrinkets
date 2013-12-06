@@ -14,13 +14,21 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Billing Information</h1>
+        
+        <div id="container">
+
+            <%@include file="header.jsp" %>
+                        
+            <div id="content">
+        
+        
         
         <%
                     UserRequest ur = new UserRequest();
-                    if( session.getAttribute("loggedin").equals(true))
+                    if( session.getAttribute("loggedin") != null && session.getAttribute("loggedin").equals(true))
                     {
-                        
+                    
+                        out.println("<h1>Billing Information</h1>");
                         String username = (String)session.getAttribute("userid");
                         User u = ur.getUser(username);
         %>
@@ -45,13 +53,12 @@
                         <input type="radio" name="billingaddr" value="newaddr">
                     </td>
                     <td>
-                        First Name: <input type="text" name="bfirstname">
-                        Last Name: <input type="text" name="blastname">
-                                                
+                        <p>First Name: <input type="text" name="bfirstname"></p>
+                        <p>Last Name: <input type="text" name="blastname"></p>
                         <p>Street Address <input type="text" name="bstreetadd"></p>
-                        City <input type="text" name="bcity">
-                        State <input type="text" name="bstate">
-                        Zipcode <input type="text" name="bzipcode">
+                        <p>City <input type="text" name="bcity"></p>
+                        <p>State <input type="text" name="bstate"></p>
+                        <p>Zipcode <input type="text" name="bzipcode"></p>
                     </td>
                 </tr>
             </table>
@@ -113,29 +120,33 @@
                         <input type="radio" name="shippingaddr" value="newaddr">
                     </td>
                     <td>
-                        First Name: <input type="text" name="sfirstname">
-                        Last Name: <input type="text" name="slastname">
-                                                
+                        <p>First Name: <input type="text" name="sfirstname"></p>
+                        <p>Last Name: <input type="text" name="slastname"></p>
                         <p>Street Address <input type="text" name="sstreetadd"></p>
-                        City <input type="text" name="scity">
-                        State <input type="text" name="sstate">
-                        Zipcode <input type="text" name="szipcode">
-                        <p>Phone <input type="text" name="sphonenum"</p>
+                        <p>City <input type="text" name="scity"></p>
+                        <p>State <input type="text" name="sstate"></p>
+                        <p>Zipcode <input type="text" name="szipcode"></p>
+                        <p>Phone <input type="text" name="sphonenum"></p>
                     </td>
                 </tr>
             </table>
-            
+            <input type="submit" value="Continue"/>
+        </form>
         <%
                     }
                     else
                     {
-                        out.println("<p>You are not logged in!</p>");
+         %>              
+                        <h1>
+                        Please <a href="login.jsp">log in</a> or
+                        <a href="register.jsp">create an account</a> first
+                        </h1>
+         <%         
                     }
-                    
          %>
               
-            <input type="submit" value="Continue"/>
-        </form>
-        
+
+            </div>
+        </div>
     </body>
 </html>
