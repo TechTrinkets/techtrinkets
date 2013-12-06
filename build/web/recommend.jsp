@@ -19,7 +19,7 @@
       <div id="container">
 
             <%@include file="header.jsp" %>
-                        
+            
             <div id="content">
         
         <%

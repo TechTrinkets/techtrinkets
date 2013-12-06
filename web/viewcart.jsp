@@ -31,7 +31,7 @@
                     double subtotal = 0.0;
                     if (session.getAttribute("cartitems") != null) {
                         ArrayList<Integer> cartItems = (ArrayList<Integer>) session.getAttribute("cartitems");
-                        
+
                         SearchRequest sr = new SearchRequest();
                         out.println("<h2>Your Cart:</h2><table id=\"cart\">");
                         out.println("<tr id=\"cartheader\"><td>Product</td><td>In Stock?</td><td>Price</td><td></td></tr>");
@@ -42,38 +42,38 @@
 
                         for (int i : cartItems) {
                             Product p = sr.productInfo(i);
-                            
-                            out.println("<td><a href=productinfo.jsp?PID="+p.getPID()+">" + p.getName() + "</a></td>");
+
+                            out.println("<td><a href=productinfo.jsp?PID=" + p.getPID() + ">" + p.getName() + "</a></td>");
                             if (p.getAvailable()) {
                                 out.println("<td><img src=\"images/check.png\" /></td>");
-                            }
-                            else {
+                            } else {
                                 out.println("<td><img src=\"images/x.png\" /></td>");
                             }
-                            
+                            out.println("<td>Delete</td>");
                             out.println("<td>$" + nf.format(p.getPrice()) + "</td>");
                             subtotal += p.getPrice();
-                            out.println("<td>Delete?</td>");
+
                             out.println("</tr>");
                         }
                 %>
 
                 <%
-                        out.println("</table>");
+                    out.println("</table>");
 
-                        out.println("<p>Subtotal: $" + nf.format(subtotal) +"</p>");
-
-                %>        
-                        <form action="controller?action=checkout" method="post">
-                        <input type="submit" value="Check out"/>
-                        </form>
+                    out.println("<p id=\"subtotal\">Total: $" + nf.format(subtotal) + "</p>");
+                                    %>        
+                <form action="controller?action=checkout" method="post">
+                    <input type="submit" value="Check out"/>
+                </form>
                 <%
 
                     } else
                         out.println("<h3>You have no items in your cart.</h3>");
                 %>
-                
+
             </div>
+                
+                <%@include file="recommend.jsp" %>
 
             <%@include file="footer.jsp" %>
         </div>
