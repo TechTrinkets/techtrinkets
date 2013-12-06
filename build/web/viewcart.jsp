@@ -34,7 +34,7 @@
 
                         SearchRequest sr = new SearchRequest();
                         out.println("<h2>Your Cart:</h2><table id=\"cart\">");
-                        out.println("<tr id=\"cartheader\"><td>Product</td><td>In Stock?</td><td>Price</td><td></td></tr>");
+                        out.println("<tr id=\"cartheader\"><td>Product</td><td>In Stock?</td><td></td><td>Price</td><td></td></tr>");
                         Collections.sort(cartItems);
                         NumberFormat nf = NumberFormat.getInstance();
                         nf.setMaximumFractionDigits(2);
@@ -63,7 +63,7 @@
                     out.println("<p id=\"subtotal\">Total: $" + nf.format(subtotal) + "</p>");
                                     %>        
                 <form action="controller?action=checkout" method="post">
-                    <input type="submit" value="Check out"/>
+                    <input type="submit" value="Check out" id="add"/>
                 </form>
                 <%
 
