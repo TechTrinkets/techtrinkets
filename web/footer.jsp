@@ -14,7 +14,7 @@
     <body>
         <div id="footer">
             <br /><br /><br />
-                Copyright 2013 Tech Trinkets, Inc. All Rights Reserved. User Agreement and Privacy Policy.
+                Copyright 2013 Tech Trinkets, Inc. All Rights Reserved.
         <br /><br /></div>
 
     </body>

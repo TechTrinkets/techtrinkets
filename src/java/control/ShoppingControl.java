@@ -102,11 +102,9 @@ public class ShoppingControl extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("dopost");
+    
         if (request.getParameter("action") != null)
         {
-            
-         
            if(request.getParameter("action").equals("register")) 
            {
                 handleCreateAccount(request,response);
@@ -140,7 +138,8 @@ public class ShoppingControl extends HttpServlet {
                     newItem.add(pid);
                     session.setAttribute("cartitems", newItem);
                 }
-                response.sendRedirect("viewcart.jsp");               
+                forwardRequest(request, response, "/recommend.jsp");
+                         
            }
            else if( request.getParameter("action").equals("checkout"))
            {
@@ -148,8 +147,6 @@ public class ShoppingControl extends HttpServlet {
            }
            else if( request.getParameter("action").equals("billing"))
            {
-               //validate input
-               
                forwardRequest(request, response, "/revieworder.jsp");
            }
            else if( request.getParameter("action").equals("submitorder"))
@@ -208,11 +205,7 @@ public class ShoppingControl extends HttpServlet {
             }
         }
         
-       
-        
-        
         session.setAttribute("cartitems", null);
-        
         forwardRequest(request, response, "/confirmation.jsp");
         
         
@@ -237,41 +230,7 @@ public class ShoppingControl extends HttpServlet {
             String passwordconfirm = request.getParameter("confirmpwd");
             String sec_quest = request.getParameter("question");
             String sec_answer = request.getParameter("answer");
-            //boolean terms = request.getParameter("terms");
             
-            /*
-            
-            if(firstName == null) //check for alpha
-            {
-                //put an error message next to the box in red
-            }
-            if(lastName == null) // alpha
-            {
-            
-            }
-            if( email == null)
-            {
-            }
-            if( confirmemail == null)
-            {
-                
-            }
-            if( password == null)
-            {}
-            if( passwordconfirm == null)
-            {}
-            if(password.length()<6)
-            {
-                //too short
-            }
-            if(password.compareTo(password) != 0)
-            {
-                //pwd does not match
-            }
-            //if( !terms){}
-            */
-            //check if user exists in db already?
-            //need to input a username, city, state, zip, phone
             
             UserUpdate newuser = new UserUpdate();
             boolean successAdd = false;
@@ -298,46 +257,36 @@ public class ShoppingControl extends HttpServlet {
             String username = request.getParameter("username");
             String password = request.getParameter("pwd");
             
-            UserRequest ur = new UserRequest();
-            User user = ur.getUser(username);
-            if(user != null && user.getPassword().compareTo(password)==0)
+            if(username == null || password == null)
             {
-                HttpSession session = request.getSession(true);
-                session.setAttribute("loggedin", new Boolean(true));
-                session.setAttribute("userid", username);
-                forwardRequest(request, response, "/index.jsp");
+                
+                request.setAttribute("loginerror","Please enter all fields");
             }
             else
             {
-                //add error message
-                forwardRequest(request, response, "/login.jsp");
+                UserRequest ur = new UserRequest();
+                User user = ur.getUser(username);
+                if(user != null)
+                {    
+                    if(user.getPassword().compareTo(password)==0)
+                    {
+                        HttpSession session = request.getSession(true);
+                        session.setAttribute("loggedin", new Boolean(true));
+                        session.setAttribute("userid", username);
+                        forwardRequest(request, response, "/index.jsp");
+                    }
+                    else
+                        request.setAttribute("loginerror", "Incorrect password for this username");
+                }
+                else
+                {
+                    request.setAttribute("loginerror", "This username is not in the system");
+                    
+                }
             }
+            forwardRequest(request, response, "/login.jsp");
         
     }    
-    
-    private void handleSelectProduct(HttpServletRequest request,
-          HttpServletResponse response) throws IOException, ServletException {
-        String addMessage = null;
-        HttpSession session = request.getSession(true);
-        
-        //forwardRequest(request, response, "/productinfo.jsp");
-        
-        // get add-pet request parameters
-        String pid = request.getParameter("pid");
-
-
-        if (pid == null) {
-          addMessage = "Improper request";
-        } else if (pid.trim().length() == 0) {
-          addMessage = "pid field must not be blank";
-        } else {
-          // execute add transaction
-          SearchRequest sr = new SearchRequest();
-          //Product p = sr.productInfo();
-          //addMessage = addResult ? "product found" : "Pet add failed";
-        }
-        //session.setAttribute("addmessage", addMessage);
-    }
     
     private void forwardRequest(HttpServletRequest request,
             HttpServletResponse response, String forwardURL)
