@@ -93,7 +93,7 @@ a:visited {
     color: #937BAF;
 }
 
-td {
+.product {
     text-align: center;
     padding: 20px;
     width: 300px;
@@ -106,5 +106,25 @@ td {
 
 .billing {
     border: 1px black;
+    
+}
+
+#cartheader {
+    background-color: #937BAF;
+    color: #FFFFFF;
+    text-align: left;
+    border: 1px solid black;
+    
+}
+
+#cart, tr {
+    border: 1px solid black;
+    border-collapse:collapse;
+    width: 650px;
+
+}
+
+td {
+        padding: 8px;
     
 }

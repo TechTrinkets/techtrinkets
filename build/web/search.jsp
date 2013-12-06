@@ -41,7 +41,7 @@
                 {     
                     Product p = result.get(i);
                     
-                    out.println("<td>");
+                    out.println("<td class=\"product\">");
                     out.println("<a href=productinfo.jsp?PID="+p.getPID()+"><img src='images/"+
                            p.getImage()+"' height=150px /> <br /><br />");
                     out.println(p.getName()+"</a><br />");

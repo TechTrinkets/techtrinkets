@@ -21,39 +21,38 @@
         <div id="container">
 
             <%@include file="header.jsp" %>
-                        
+
             <div id="content">
 
-            
+
                 <%
-                  
-                if( session.getAttribute("cartitems") != null)
-                {
-                    ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
-                
-                    SearchRequest sr = new SearchRequest();
-                    out.println("Your Cart: <table>");
-                    out.println("<tr><td><b>Product</b></td><td><b>In Stock?</b></td><td><b>Price</b></td></tr>");
-                        
-                    for(int i: cartItems)
-                    {
-                        Product p = sr.productInfo(i);
-                        out.println("<tr><td>"+p.getName()+"</td>");
-                        out.println("<td>"+p.getAvailable()+"</td>");
-                        out.println("<td>$"+p.getPrice()+"</td>");
-                        out.println("</tr>");
-                    }
+
+                    if (session.getAttribute("cartitems") != null) {
+                        ArrayList<Integer> cartItems = (ArrayList<Integer>) session.getAttribute("cartitems");
+
+                        SearchRequest sr = new SearchRequest();
+                        out.println("Your Cart: <br /><table id=\"cart\">");
+                        out.println("<tr id=\"cartheader\"><td>Product</td><td>In Stock?</td><td>Price</td><td></td></tr>");
+
+                        for (int i : cartItems) {
+                            Product p = sr.productInfo(i);
+                            
+                            out.println("<td>" + p.getName() + "</td>");
+                            out.println("<td>" + p.getAvailable() + "</td>");
+                            out.println("<td>$" + p.getPrice() + "</td>");
+                            out.println("<td>Delete?</td>");
+                            out.println("</tr>");
+                        }
+                %>
+
+                <%
+                        out.println("</table>");
+                    } else
+                        out.println("<p>You have no items in your cart</p>");
                 %>
                 <form action="controller?action=checkout" method="post">
                     <input type="submit" value="Check out"/>
                 </form>
-                <%
-                    out.println("</table>");
-                }
-                else
-                    out.println("<p>You have no items in your cart</p>");
-                %>
-        
             </div>
 
             <%@include file="footer.jsp" %>
