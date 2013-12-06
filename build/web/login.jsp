@@ -25,22 +25,16 @@
             User Name: <input type="text" name="username"> <br />
             Password: <input type="password" name="pwd"> <br />
             <input type="submit" value="Submit"> 
-                
-            <h2>Create a new account:</h2>
-                
-                <form action="#something">
-                    First Name: <input type="input" name="firstName" alt="First Name" /> <br />
-                    Last Name: <input type="input" name="lastName" alt="Last Name" /> <br />
-                    Email: <input type="input" name="email" alt="Email Address" /> <br />
-                    Password <input type="password" name="password" alt="Password" /> <br />
-                    Retype Password: <input type="password" name="passwordconfirm" alt="Confirm Password" /> <br />
-                    <input type="checkbox" name="terms" />I agree to the <a href="#terms">terms</a>. <br /><br />
-                    <input type="submit" name="submit" alt="Submit" />
-                </form>
+        </form>       
+            
+
         <br />
         
         <button onclick="location.href='forgotpassword.jsp'">
                 Forgot Password?</button>
+        
+        <br/>
+            <a href="register.jsp">Create a new account</a>
          
         </div>
 

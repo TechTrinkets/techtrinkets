@@ -49,8 +49,6 @@
                         out.println("<p>You are not logged in!</p>");
                     }
                     
-                    
-                    
                 %>
                 
             

@@ -147,6 +147,12 @@ public class ShoppingControl extends HttpServlet {
                
                forwardRequest(request, response, "/revieworder.jsp");
            }
+           else if( request.getParameter("action").equals("submitorder"))
+           {
+               handleSubmitOrder(request, response);
+           
+           }
+           
         
         }   
         else if( request.getParameter("secretanswer") != null)
@@ -163,6 +169,30 @@ public class ShoppingControl extends HttpServlet {
             }
         }
      
+    }
+    
+    private void handleSubmitOrder(HttpServletRequest request,
+          HttpServletResponse response) throws IOException, ServletException {
+        
+        HttpSession session = request.getSession(true);
+        
+        ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
+        double totalPrice = 0;
+                    
+        SearchRequest sr = new SearchRequest();
+
+        for(int i: cartItems)
+        {
+            Product p = sr.productInfo(i);
+            totalPrice = totalPrice + p.getPrice();             
+        }
+        
+        //Add to order table
+        //add to order product table
+        
+        forwardRequest(request, response, "/confirmation.jsp");
+        
+        
     }
 
     private void handleCreateAccount(HttpServletRequest request,
