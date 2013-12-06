@@ -147,6 +147,12 @@ public class ShoppingControl extends HttpServlet {
                
                forwardRequest(request, response, "/revieworder.jsp");
            }
+           else if( request.getParameter("action").equals("submitorder"))
+           {
+               handleSubmitOrder(request, response);
+           
+           }
+           
         
         }   
         else if( request.getParameter("secretanswer") != null)
@@ -164,6 +170,30 @@ public class ShoppingControl extends HttpServlet {
         }
      
     }
+    
+    private void handleSubmitOrder(HttpServletRequest request,
+          HttpServletResponse response) throws IOException, ServletException {
+        
+        HttpSession session = request.getSession(true);
+        
+        ArrayList<Integer> cartItems = (ArrayList<Integer>)session.getAttribute("cartitems");
+        double totalPrice = 0;
+                    
+        SearchRequest sr = new SearchRequest();
+
+        for(int i: cartItems)
+        {
+            Product p = sr.productInfo(i);
+            totalPrice = totalPrice + p.getPrice();             
+        }
+        
+        //Add to order table
+        //add to order product table
+        
+        forwardRequest(request, response, "/confirmation.jsp");
+        
+        
+    }
 
     private void handleCreateAccount(HttpServletRequest request,
           HttpServletResponse response) throws IOException, ServletException {
@@ -175,7 +205,6 @@ public class ShoppingControl extends HttpServlet {
             String email = request.getParameter("email");
             String confirmemail = request.getParameter("confirmemail");
             String phone = request.getParameter("phonenumber");
-            int phonei = Integer.parseInt(phone);
             String street = request.getParameter("streetadd");
             String city = request.getParameter("city");
             String state = request.getParameter("state");
@@ -223,7 +252,7 @@ public class ShoppingControl extends HttpServlet {
             
             UserUpdate newuser = new UserUpdate();
             boolean successAdd = false;
-            successAdd = newuser.addUser(123, firstName, lastName, city, state, zip, phonei,
+            successAdd = newuser.addUser(123, firstName, lastName, city, state, zip, phone,
                   email, password, username, sec_quest, sec_answer, street);
             
            if( !successAdd )

@@ -8,11 +8,11 @@ package model;
 public class User {
 
    private String firstName, lastName, city, state, email, password, 
-           username, sec_quest, sec_answer, street;
-   private int UID, zipCode, phoneNum; 
+           username, sec_quest, sec_answer, street, phoneNum;
+   private int UID, zipCode; 
    
    public User(int UID, String firstName, String lastName, String city, 
-         String state, int zipCode, int phoneNum, String email, String password, 
+         String state, int zipCode, String phoneNum, String email, String password, 
          String username, String sec_quest, String sec_answer, String street) {
       
       this.firstName = firstName;
@@ -39,7 +39,7 @@ public class User {
    public String getPassword(){ return password;}
    public int getUID(){ return UID; }
    public int getZipCode(){ return zipCode; }
-   public int getPhoneNumber(){ return phoneNum; }
+   public String getPhoneNumber(){ return phoneNum; }
    public String getSecQuest(){ return sec_quest;}
    public String getSecAnswer(){ return sec_answer;}
    

@@ -24,9 +24,10 @@
         <form action="controller?action=login" method="post">
             User Name: <input type="text" name="username"> <br />
             Password: <input type="password" name="pwd"> <br />
+
             <input type="submit" value="Submit"> <button onclick="location.href='forgotpassword.jsp'">
                 Forgot Password?</button>
-         
+       
         </div>
 
             <%@include file="footer.jsp" %>
