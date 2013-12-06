@@ -175,7 +175,6 @@ public class ShoppingControl extends HttpServlet {
             String email = request.getParameter("email");
             String confirmemail = request.getParameter("confirmemail");
             String phone = request.getParameter("phonenumber");
-            int phonei = Integer.parseInt(phone);
             String street = request.getParameter("streetadd");
             String city = request.getParameter("city");
             String state = request.getParameter("state");
@@ -223,7 +222,7 @@ public class ShoppingControl extends HttpServlet {
             
             UserUpdate newuser = new UserUpdate();
             boolean successAdd = false;
-            successAdd = newuser.addUser(123, firstName, lastName, city, state, zip, phonei,
+            successAdd = newuser.addUser(123, firstName, lastName, city, state, zip, phone,
                   email, password, username, sec_quest, sec_answer, street);
             
            if( !successAdd )
