@@ -18,10 +18,10 @@ public class OrderUpdate {
 
         DBCommandHandler dbComHand = new DBCommandHandler();
         String command = "INSERT INTO Orders (UID, total_price, date, time)"
-                + "VALUES(";
+                + " VALUES(";
         command += uid;
-        command += "," + total_price;
-        command += " , '" + date + "'";
+        command += ", " + total_price;
+        command += ", '" + date + "'";
         command += ", '" + time + "'";
         command += ");";
 
@@ -38,11 +38,11 @@ public class OrderUpdate {
     public boolean addOrderProduct(int oid, int pid, int quantity){
         
         DBCommandHandler dbComHand = new DBCommandHandler();
-        String command = "INSERT INTO Order_Product (OID, PID, quantity)"
-                + "VALUES(";
+        String command = "INSERT INTO OrderProduct (OID, PID, quantity)"
+                + " VALUES(";
         command += oid;
-        command += "," + pid;
-        command += "," + quantity;
+        command += ", " + pid;
+        command += ", " + quantity;
         command += ");";
          
         try {

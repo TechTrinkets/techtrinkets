@@ -1,7 +1,7 @@
 package model;
 
 /**
- * User represents the users in the regeistry
+ * User represents the users in the registry
  * @author Allen
  */
 

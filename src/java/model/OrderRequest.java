@@ -75,14 +75,14 @@ public class OrderRequest {
     public int getOrderID(int uid, double totalPrice, String date, String time) {
 
         int result = 0;
-        String query = "SELECT oid FROM Orders WHERE UID=" + uid
-                + "AND total_price=" + totalPrice + "AND date='" + date
-                + "' AND time='" + time + "');";
+        String query = "SELECT OID FROM Orders WHERE UID=" + uid
+                + " AND total_price=" + totalPrice + " AND date='" + date
+                + "' AND time='" + time + "';";
 
         try {
             DBQueryHandler dbQueHand = new DBQueryHandler();
             ResultSet rs = dbQueHand.doQuery(query);
-
+            rs.next();
             result = rs.getInt(1);
             
             dbQueHand.close();

@@ -6,6 +6,7 @@ package control;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -204,12 +205,18 @@ public class ShoppingControl extends HttpServlet {
         
         Date dNow = new Date( );
         SimpleDateFormat d = new SimpleDateFormat ("yyyy.MM.dd");
-        SimpleDateFormat t = new SimpleDateFormat("hh:mm:ss a zzz");
+        SimpleDateFormat t = new SimpleDateFormat("hh:mm:ss");
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(2);
+        nf.setMinimumFractionDigits(2);
+        String s_totalPrice = nf.format(totalPrice);
+        totalPrice = Double.parseDouble(s_totalPrice);
+                    
         Integer UID = ur.getUserID(username);
       
         
         boolean addresult = o.addOrder(UID, totalPrice, d.format(dNow), t.format(dNow));
-        int OID = r.getOrderID(UID,totalPrice,d.format(dNow),t.format(dNow));
+        int OID = r.getOrderID(UID, totalPrice,d.format(dNow),t.format(dNow));
         
         for(int i: cartItems)
         {

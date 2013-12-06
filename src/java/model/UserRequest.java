@@ -152,12 +152,12 @@ public class UserRequest{
    public int getUserID(String username) {
 
         int result = 0;
-        String query = "SELECT id FROM Users WHERE username='" + username + "')";
+        String query = "SELECT UID FROM Users WHERE username='" + username + "'";
 
         try {
             DBQueryHandler dbQueHand = new DBQueryHandler();
             ResultSet rs = dbQueHand.doQuery(query);
-
+            rs.next();
             result = rs.getInt(1);
             
             dbQueHand.close();
