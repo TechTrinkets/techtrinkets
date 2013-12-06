@@ -148,4 +148,23 @@ public class UserRequest{
       
       return result;
    }
+   
+   public int getUserID(String username) {
+
+        int result = 0;
+        String query = "SELECT id FROM Users WHERE username='" + username + "')";
+
+        try {
+            DBQueryHandler dbQueHand = new DBQueryHandler();
+            ResultSet rs = dbQueHand.doQuery(query);
+
+            result = rs.getInt(1);
+            
+            dbQueHand.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }
