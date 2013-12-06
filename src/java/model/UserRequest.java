@@ -31,7 +31,7 @@ public class UserRequest{
             String city = rs.getString(i++);
             String state = rs.getString(i++);
             int zipCode = rs.getInt(i++);
-            int phoneNum = rs.getInt(i++);
+            String phoneNum = rs.getInt(i++);
             String email = rs.getString(i++);
             String password = rs.getString(i++);
             String username = rs.getString(i++);
@@ -74,7 +74,7 @@ public class UserRequest{
             String city = rs.getString(i++);
             String state = rs.getString(i++);
             int zipCode = rs.getInt(i++);
-            int phoneNum = rs.getInt(i++);
+            String phoneNum = rs.getString(i++);
             String email = rs.getString(i++);
             String password = rs.getString(i++);
             String username = rs.getString(i++);
