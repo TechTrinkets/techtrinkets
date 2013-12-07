@@ -54,7 +54,7 @@ public class SearchRequest {
         //Check if searchTerms contains only letters or a hyphen
         if (searchterms.compareTo("All") == 0) {
             return getProductTable();
-        } else {
+        } else if(Pattern.matches("^[a-zA-Z]+$", searchterms)){
             String query = "SELECT * FROM Products WHERE name LIKE '%"
                     + searchterms + "%' OR category LIKE '%"
                     + searchterms + "%';";
