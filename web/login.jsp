@@ -22,7 +22,7 @@
             <%@include file="header.jsp" %>
 
             <div id="content">
-<<<<<<< HEAD
+
         <h2>Log in to your account:</h2>
         <form id="form1" action="controller?action=login" method="post">
             User Name: <input type="text" name="username" >
@@ -54,25 +54,7 @@
         </form>
         
         </div>
-=======
-                <h2>Login to your account:</h2>
-                <form id="form2" action="controller?action=login" method="post">
-                    User Name: <input type="text" name="username" >
-                    <%
-                        if (request.getAttribute("loginerror") != null) {
-                            out.println("<div id=\"error\">" + request.getAttribute("loginerror") + "</div>");
-                        }
-                    %>
 
-                    <br />
-                    Password: <input type="password" name="pwd" ><br />
-
-                    <input type="submit" value="Submit"> <button onclick="location.href = 'forgotpassword.jsp'">
-                        Forgot Password?</button>
-                </form>
-
-            </div>
->>>>>>> 647e449a366c62ad1514d0c61c942eb321753a96
 
             <%@include file="footer.jsp" %>
         </div>

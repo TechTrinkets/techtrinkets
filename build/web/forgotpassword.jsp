@@ -26,14 +26,18 @@
         Just Answer your secret question!
         
         <%
-            
-            if(request.getParameter("forgot") != null)
+            if(request.getParameter("answererror") != null)
             {
+                out.println("<p>" +request.getParameter("answererror") + "</p>");
+            }
+            
+            //if(request.getParameter("forgot") != null)
+            //{
                 if(request.getParameter("usernameforgot") != null)
                 {
                     String username = request.getParameter("usernameforgot");
                     UserRequest rq = new UserRequest();
-                    String sec_quest = rq.getRequestQuestion(username);
+                    String sec_quest = rq.getSecQuest(username);
                     out.println("<p>"+sec_quest+"</p>");
          %> 
                     <form action="controller?action=secretanswer" method="post">
@@ -47,12 +51,12 @@
                     out.println("<p>Username not found</p>");
                     
                 }
-            }
+            /*}
             else
             {
                 out.println("<p>Please try again</p>");
                 
-            }    
+            }  */  
             
         %>
         

@@ -125,7 +125,7 @@ public class ShoppingControl extends HttpServlet {
                     session.setAttribute("cartitems", newItem);
                 }
                 forwardRequest(request, response, "/recommend.jsp");
-<<<<<<< HEAD
+
                          
            }
            else if( request.getParameter("action").equals("checkout"))
@@ -149,30 +149,26 @@ public class ShoppingControl extends HttpServlet {
            {
                forwardRequest(request, response, "/forgotpassword.jsp");
            }
-           else if( request.getParameter("action").equals("answer"))
+           else if( request.getParameter("action").equals("secretanswer"))
            {
                HttpSession session = request.getSession(true);
-               String answer = (String)session.getAttribute("answer");
-               
+               String answerEntered = request.getParameter("answer");
                
                UserRequest ur = new UserRequest();
-               //String answer = ur.getSecretAnswer();
-               //if()
-               
-               //forwardRequest(request, response, );
+               String answerDB = ur.getSecAnswer(request.getParameter("usernameforgot"));
+               if(answerEntered.equals(answerDB))
+               {
+                   session.setAttribute("loggedin", true);
+                   session.setAttribute("userid", request.getParameter("usernameforgot"));
+                   
+                   forwardRequest(request, response, "index.jsp");
+               }
+               else
+               {
+                   request.setAttribute("answererror", "Incorrect security answer.");
+                   forwardRequest(request, response, "/forgotpassword.jsp");
+               }
            }
-=======
-
-            } else if (request.getParameter("action").equals("checkout")) {
-                forwardRequest(request, response, "/billing.jsp");
-            } else if (request.getParameter("action").equals("billing")) {
-                forwardRequest(request, response, "/revieworder.jsp");
-            } else if (request.getParameter("action").equals("submitorder")) {
-                handleSubmitOrder(request, response);
-
-            } else if (request.getParameter("action").equals("update")) {
-            }
->>>>>>> 647e449a366c62ad1514d0c61c942eb321753a96
         }
     }
 

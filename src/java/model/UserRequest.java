@@ -113,4 +113,42 @@ public class UserRequest{
 
         return result;
     }
+   
+   public String getSecQuest(String username){
+       
+       String query = "SELECT sec_quest FROM Users WHERE username='"
+               + username + "';";
+       String result = "";
+       try {
+            DBQueryHandler dbQueHand = new DBQueryHandler();
+            ResultSet rs = dbQueHand.doQuery(query);
+            rs.next();
+            result = rs.getString(1);
+            
+            dbQueHand.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       
+       return result;
+   }
+   
+   public String getSecAnswer(String username){
+       
+       String query = "SELECT sec_answer FROM Users WHERE username='"
+               + username + "';";
+       String result = "";
+       try {
+            DBQueryHandler dbQueHand = new DBQueryHandler();
+            ResultSet rs = dbQueHand.doQuery(query);
+            rs.next();
+            result = rs.getString(1);
+            
+            dbQueHand.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       
+       return result;
+   }
 }
