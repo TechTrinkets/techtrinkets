@@ -23,7 +23,7 @@
             <div id="content">
             
         <h1>Forgot Your Password?</h1>
-        Just Answer your secret question!
+        
         
         <%
             if(request.getParameter("answererror") != null)
@@ -31,32 +31,34 @@
                 out.println("<p>" +request.getParameter("answererror") + "</p>");
             }
             
-            //if(request.getParameter("forgot") != null)
-            //{
                 if(request.getParameter("usernameforgot") != null)
                 {
                     String username = request.getParameter("usernameforgot");
                     UserRequest rq = new UserRequest();
                     String sec_quest = rq.getSecQuest(username);
+                    if(sec_quest == "")
+                    {
+          %>
+                        <p>Invalid username. <a href="login.jsp">Try again.</a></p>
+          <%
+                    }
+                    else
+                    {
+                    out.println("Just Answer your secret question!");
                     out.println("<p>"+sec_quest+"</p>");
          %> 
-                    <form action="controller?action=secretanswer" method="post">
+                    <form action="controller?action=secretanswer&usernameforgot=<%=username%>" method="post">
                     Answer: <input type="text" name="answer">
                     <input type="submit" value="Submit">
                     </form>
-         <%           
+         <%     
+                    }
                 }
                 else
                 {    
                     out.println("<p>Username not found</p>");
-                    
                 }
-            /*}
-            else
-            {
-                out.println("<p>Please try again</p>");
-                
-            }  */  
+
             
         %>
         
