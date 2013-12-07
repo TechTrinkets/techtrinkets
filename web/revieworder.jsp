@@ -1,8 +1,3 @@
-<%-- 
-    Document   : revieworder
-    Created on : Nov 27, 2013, 12:04:50 PM
-    Author     : Rissy
---%>
 
 <%@page import="java.text.NumberFormat"%>
 <%@page import="model.Product"%>
@@ -24,9 +19,9 @@
             <%@include file="header.jsp" %>
                         
             <div id="content">
-        <h1>Your order</h1>
+        <h2>Review Your Order:</h2>
         
-        <h2>Items</h2>
+        <h3>Items:</h3>
         <%
                   
                 if( session.getAttribute("cartitems") != null)
@@ -44,13 +39,13 @@
                         out.println("<td>"+p.getName()+"</td>");
                         out.println("<td>$"+p.getPrice()+"</td>");
                         out.println("</td></tr>");
-                        totalPrice = totalPrice + p.getPrice();
+                        totalPrice += p.getPrice();
                         
                     }
                     NumberFormat nf = NumberFormat.getInstance();
                     nf.setMaximumFractionDigits(2);
                     nf.setMinimumFractionDigits(2);
-                    out.println("<tr><td><b>Total<b/></td><td>$"+nf.format(totalPrice)+"</td></tr>");
+                    out.println("<tr><td style=\"text-align:right\"><b>Total:<b/></td><td>$"+nf.format(totalPrice)+"</td></tr>");
                     out.println("</table>");
                 }
                 else
@@ -58,7 +53,7 @@
                 
         %>
         
-        <h2>Billing Information</h2>
+        <h3>Billing Information:</h3>
         <%
             
             if(request.getParameter("billingaddr").equals("accountaddr"))
@@ -68,8 +63,8 @@
                 User u = ur.getUser(username);
                 out.println("<b>"+u.getFirstName()+" "+u.getLastName()+"</b><br/>");
                 out.println(u.getStreetAddress()+"<br/>");
-                out.println(u.getCity()+","+u.getState()+"<br/>");
-                out.println(u.getZipCode()+"<br/>");
+                out.println(u.getCity()+", "+u.getState());
+                out.println(u.getZipCode()+"<br/><br/>");
             }
             else
             {
@@ -84,7 +79,7 @@
             
             
         %>
-        <h2>Shipping Information</h2>
+        <h3>Shipping Information:</h3>
         <%
             if(request.getParameter("shippingaddr").equals("accountaddr"))
             {
@@ -93,7 +88,7 @@
                 User u = ur.getUser(username);
                 out.println("<b>"+u.getFirstName()+" "+u.getLastName()+"</b><br/>");
                 out.println(u.getStreetAddress()+"<br/>");
-                out.println(u.getCity()+","+u.getState()+"<br/>");
+                out.println(u.getCity()+", "+u.getState());
                 out.println(u.getZipCode()+"<br/>");
                 out.println("Phone: "+u.getPhoneNumber()+"<br/>");
             }
@@ -111,9 +106,9 @@
             
             
         %>
-        
+        <br />
         <form action="controller?action=submitorder" method="post">
-            <input type="submit" value="Place Order">
+            <input type="submit" value="Place Order" id="add">
         </form>
                
             </div>

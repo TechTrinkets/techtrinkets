@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 
 import java.io.IOException;
@@ -126,49 +122,34 @@ public class ShoppingControl extends HttpServlet {
                 }
                 forwardRequest(request, response, "/recommend.jsp");
 
-                         
-           }
-           else if( request.getParameter("action").equals("checkout"))
-           {
-               forwardRequest(request, response, "/billing.jsp");
-           }
-           else if( request.getParameter("action").equals("billing"))
-           {
-               forwardRequest(request, response, "/revieworder.jsp");
-           }
-           else if( request.getParameter("action").equals("submitorder"))
-           {
-               handleSubmitOrder(request, response);
-           
-           }
-           else if( request.getParameter("action").equals("update"))
-           {
-               forwardRequest(request, response, "/index.jsp");
-           }
-           else if( request.getParameter("action").equals("forgot"))
-           {
-               forwardRequest(request, response, "/forgotpassword.jsp");
-           }
-           else if( request.getParameter("action").equals("secretanswer"))
-           {
-               HttpSession session = request.getSession(true);
-               String answerEntered = request.getParameter("answer");
-               
-               UserRequest ur = new UserRequest();
-               String answerDB = ur.getSecAnswer(request.getParameter("usernameforgot"));
-               if(answerEntered.equals(answerDB))
-               {
-                   session.setAttribute("loggedin", true);
-                   session.setAttribute("userid", request.getParameter("usernameforgot"));
-                   
-                   forwardRequest(request, response, "index.jsp");
-               }
-               else
-               {
-                   request.setAttribute("answererror", "Incorrect security answer.");
-                   forwardRequest(request, response, "/forgotpassword.jsp");
-               }
-           }
+
+            } else if (request.getParameter("action").equals("checkout")) {
+                forwardRequest(request, response, "/billing.jsp");
+            } else if (request.getParameter("action").equals("billing")) {
+                forwardRequest(request, response, "/revieworder.jsp");
+            } else if (request.getParameter("action").equals("submitorder")) {
+                handleSubmitOrder(request, response);
+
+            } else if (request.getParameter("action").equals("update")) {
+                forwardRequest(request, response, "/index.jsp");
+            } else if (request.getParameter("action").equals("forgot")) {
+                forwardRequest(request, response, "/forgotpassword.jsp");
+            } else if (request.getParameter("action").equals("secretanswer")) {
+                HttpSession session = request.getSession(true);
+                String answerEntered = request.getParameter("answer");
+
+                UserRequest ur = new UserRequest();
+                String answerDB = ur.getSecAnswer(request.getParameter("usernameforgot"));
+                if (answerEntered.equals(answerDB)) {
+                    session.setAttribute("loggedin", true);
+                    session.setAttribute("userid", request.getParameter("usernameforgot"));
+
+                    forwardRequest(request, response, "index.jsp");
+                } else {
+                    request.setAttribute("answererror", "Incorrect security answer.");
+                    forwardRequest(request, response, "/forgotpassword.jsp");
+                }
+            }
         }
     }
 

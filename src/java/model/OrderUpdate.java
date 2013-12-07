@@ -1,17 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.*;
 import java.util.regex.Pattern;
 import model.db.DBCommandHandler;
 
-/**
- *
- * @author Melissa
- */
 public class OrderUpdate {
 
     public boolean addOrder(int uid, double total_price, String date, String time) {
@@ -34,9 +26,9 @@ public class OrderUpdate {
             return false;
         }
     }
-    
-    public boolean addOrderProduct(int oid, int pid, int quantity){
-        
+
+    public boolean addOrderProduct(int oid, int pid, int quantity) {
+
         DBCommandHandler dbComHand = new DBCommandHandler();
         String command = "INSERT INTO OrderProduct (OID, PID, quantity)"
                 + " VALUES(";
@@ -44,7 +36,7 @@ public class OrderUpdate {
         command += ", " + pid;
         command += ", " + quantity;
         command += ");";
-         
+
         try {
             int resultCount = dbComHand.doCommand(command);
             dbComHand.close();
@@ -53,20 +45,18 @@ public class OrderUpdate {
             ex.printStackTrace();
             return false;
         }
-        
     }
-    
+
     public boolean deleteOrder(int oid) {
-      DBCommandHandler dbComHand = new DBCommandHandler();
-      try {
-         String command = "DELETE FROM Orders WHERE OID ='" + oid + "'";
-         int result = dbComHand.doCommand(command);
-         dbComHand.close();
-         return (result > 0);
-      } catch (SQLException ex) {
-         ex.printStackTrace();
-         return false;
-      }
-   }
-    //after an order is submitted, needs to be added to orders table
+        DBCommandHandler dbComHand = new DBCommandHandler();
+        try {
+            String command = "DELETE FROM Orders WHERE OID ='" + oid + "'";
+            int result = dbComHand.doCommand(command);
+            dbComHand.close();
+            return (result > 0);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
 }

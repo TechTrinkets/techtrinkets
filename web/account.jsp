@@ -1,8 +1,3 @@
-<%-- 
-    Document   : test
-    Created on : Nov 27, 2013, 11:18:43 AM
-    Author     : Rissy
---%>
 
 <%@page import="model.User"%>
 <%@page import="model.UserRequest"%>
@@ -13,7 +8,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tech Trinkets</title>
+        <title>Account Information</title>
     </head>
     <body>
 

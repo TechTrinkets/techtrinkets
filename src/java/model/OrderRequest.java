@@ -5,10 +5,6 @@ import java.sql.*;
 import java.util.regex.Pattern;
 import model.db.DBQueryHandler;
 
-/*
- * Handle requests for order information
- * @author Allen
- */
 public class OrderRequest {
 
     public ArrayList<Object> getOrderTable() {

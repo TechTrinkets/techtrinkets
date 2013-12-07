@@ -1,8 +1,4 @@
-<%-- 
-    Document   : viewcart
-    Created on : Dec 2, 2013, 9:00:05 AM
-    Author     : Student_User
---%>
+
 <%@page import="java.text.NumberFormat"%>
 <%@page import="java.util.Collections"%>
 <%@page import="java.util.Arrays"%>
@@ -34,7 +30,7 @@
 
                         SearchRequest sr = new SearchRequest();
                         out.println("<h2>Your Cart:</h2><table id=\"cart\">");
-                        out.println("<tr id=\"cartheader\"><td>Product</td><td>In Stock?</td><td></td><td>Price</td><td></td></tr>");
+                        out.println("<tr id=\"cartheader\"><td>Product</td><td>In Stock?</td><td id=\"price\">Price</td></tr>");
                         Collections.sort(cartItems);
                         NumberFormat nf = NumberFormat.getInstance();
                         nf.setMaximumFractionDigits(2);
@@ -45,17 +41,12 @@
 
                             out.println("<td><a href=productinfo.jsp?PID=" + p.getPID() + ">" + p.getName() + "</a></td>");
                             if (p.getAvailable()) {
-                                out.println("<td><img src=\"images/check.png\" /></td>");
+                                out.println("<td id=\"price\"><img src=\"images/check.png\" /></td>");
                             } else {
-                                out.println("<td><img src=\"images/x.png\" /></td>");
+                                out.println("<td id=\"price\"><img src=\"images/x.png\" /></td>");
                             }
-                            out.println("<td>Delete</td>");
-                            out.println("<td>$" + nf.format(p.getPrice()) + "</td>");
+                            out.println("<td id=\"price\">$" + nf.format(p.getPrice()) + "</td>");
                             subtotal += p.getPrice();
-                            
-                            out.println("<form action=\"controller?action=delete method=\"post\" >");
-                            out.println("<td><p><input type\"submit\" value=\"Delete?\" name=\"action\" ></p></td>");
-                            out.println("</form");
 
                             out.println("</tr>");
                         }
@@ -65,9 +56,13 @@
                     out.println("</table>");
 
                     out.println("<p id=\"subtotal\">Total: $" + nf.format(subtotal) + "</p>");
-                                    %>        
+                %>        
                 <form action="controller?action=checkout" method="post">
                     <input type="submit" value="Check out" id="add"/>
+                </form>
+                <br /><br />
+                <form action="search.jsp?searchterm=All" method="post">
+                    <input type="submit" value="Continue Shopping" id="continueShopping"/>
                 </form>
                 <%
 
@@ -76,8 +71,8 @@
                 %>
 
             </div>
-                
-             
+
+
 
             <%@include file="footer.jsp" %>
         </div>

@@ -1,10 +1,4 @@
 
-<%-- 
-Document   : test
-Created on : Nov 27, 2013, 11:18:43 AM
-Author     : Rissy
---%>
-
 <%@page import="model.User"%>
 <%@page import="model.UserRequest"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +8,7 @@ Author     : Rissy
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Tech Trinkets</title>
+        <title>Billing Information</title>
     </head>
     <body>
 
@@ -24,29 +18,29 @@ Author     : Rissy
 
 
             <div id="content">
-                <div class="billing">
+                <div>
 
                     <%
                         UserRequest ur = new UserRequest();
                         if (session.getAttribute("loggedin") != null && session.getAttribute("loggedin").equals(true)) {
 
-                            out.println("<h2>Billing Information</h2>");
+                            out.println("<h2>Billing Information:</h2>");
                             String username = (String) session.getAttribute("userid");
                             User u = ur.getUser(username);
                     %>
                     <form action="revieworder.jsp" method="post">
-                        <table border="1">
+                        <table>
                             <tr>
                                 <td>
-                                    <input type="radio" name="billingaddr" value="accountaddr">
+                                    <input type="radio" name="billingaddr" value="accountaddr" checked>
                                 </td>
-                                <td>
+                                <td class="billing">
                                     <%
                                         out.println("<b>" + u.getFirstName() + " " + u.getLastName() + "</b><br/>");
                                         out.println(u.getStreetAddress() + "<br/>");
-                                        out.println(u.getCity() + ", " + u.getState() + "<br/>");
+                                        out.println(u.getCity() + ", " + u.getState() + " ");
                                         out.println(u.getZipCode() + "<br/>");
-                                        out.println("Phone: " + u.getPhoneNumber() + "<br/>");
+                                        out.println("Phone: " + u.getPhoneNumber());
                                     %>
                                 </td>
                             </tr>
@@ -55,12 +49,12 @@ Author     : Rissy
                                     <input type="radio" name="billingaddr" value="newaddr">
                                 </td>
                                 <td>
-                                    <p>First Name: <input type="text" name="bfirstname"></p>
-                                    <p>Last Name: <input type="text" name="blastname"></p>
-                                    <p>Street Address <input type="text" name="bstreetadd"></p>
-                                    <p>City <input type="text" name="bcity"></p>
-                                    <p>State <input type="text" name="bstate"></p>
-                                    <p>Zipcode <input type="text" name="bzipcode"></p>
+                                    <p>First Name: <input type="text" name="bfirstname"><br />
+                                        Last Name: <input type="text" name="blastname"><br />
+                                        Street Address: <input type="text" name="bstreetadd"><br />
+                                        City: <input type="text" name="bcity">&nbsp;&nbsp;<br />
+                                        State: <input type="text" name="bstate"  size="3"><br />
+                                        Zip: <input type="text" name="bzipcode" size="7"></p>
                                 </td>
                             </tr>
                         </table>
@@ -93,25 +87,25 @@ Author     : Rissy
                         </select>
                         /
                         <select>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
+                            <option value="13">2013</option>
+                            <option value="14">2014</option>
+                            <option value="15">2015</option>
+                            <option value="16">2016</option>
                         </select>
                         <br/>
                         <br/>
                         <h1>Shipping Information</h1>
 
-                        <table border="1">
+                        <table>
                             <tr>
                                 <td>
-                                    <input type="radio" name="shippingaddr" value="accountaddr">
+                                    <input type="radio" name="shippingaddr" value="accountaddr" checked>
                                 </td>
                                 <td>
                                     <%
                                         out.println("<b>" + u.getFirstName() + " " + u.getLastName() + "</b><br/>");
                                         out.println(u.getStreetAddress() + "<br/>");
-                                        out.println(u.getCity() + "," + u.getState() + "<br/>");
+                                        out.println(u.getCity() + ", " + u.getState());
                                         out.println(u.getZipCode() + "<br/>");
                                         out.println("Phone: " + u.getPhoneNumber() + "<br/>");
                                     %>
@@ -122,17 +116,17 @@ Author     : Rissy
                                     <input type="radio" name="shippingaddr" value="newaddr">
                                 </td>
                                 <td>
-                                    <p>First Name: <input type="text" name="sfirstname"></p>
-                                    <p>Last Name: <input type="text" name="slastname"></p>
-                                    <p>Street Address <input type="text" name="sstreetadd"></p>
-                                    <p>City <input type="text" name="scity"></p>
-                                    <p>State <input type="text" name="sstate"></p>
-                                    <p>Zipcode <input type="text" name="szipcode"></p>
-                                    <p>Phone <input type="text" name="sphonenum"></p>
+                                    <p>First Name: <input type="text" name="sfirstname"><br/>
+                                        Last Name: <input type="text" name="slastname"><br/>
+                                        Street Address: <input type="text" name="sstreetadd"><br/>
+                                        City: <input type="text" name="scity"><br/>
+                                        State: <input type="text" name="sstate" size="3"><br/>
+                                        Zip: <input type="text" name="szipcode" size="7"><br/>
+                                        Phone: <input type="text" name="sphonenum"></p>
                                 </td>
                             </tr>
                         </table>
-                        <input type="submit" value="Continue"/>
+                        <input type="submit" value="Continue" id="add"/>
                     </form>
                     <%
                     } else {
@@ -144,9 +138,6 @@ Author     : Rissy
                     <%             }
                     %>
 
-
-                    <input type="submit" value="Continue"/>
-                    </form>
                 </div>
                 <%@include file="footer.jsp" %>
             </div>

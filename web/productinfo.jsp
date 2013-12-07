@@ -1,8 +1,3 @@
-<%-- 
-    Document   : productinfo
-    Created on : Nov 27, 2013, 12:04:38 PM
-    Author     : Rissy
---%>
 
 <%@page import="model.Product"%>
 <%@page import="model.SearchRequest"%>

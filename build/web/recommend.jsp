@@ -1,8 +1,3 @@
-<%-- 
-    Document   : recommend
-    Created on : Dec 1, 2013, 5:25:50 PM
-    Author     : Student_User
---%>
 
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Product"%>
@@ -23,10 +18,7 @@
                 <div id="content">
 
                     <%
-
                         Integer pid = Integer.parseInt(request.getParameter("PID"));
-
-
                         SearchRequest sr = new SearchRequest();
                         Product p = sr.productInfo(pid);
 
@@ -35,7 +27,6 @@
                         } else {
                             out.println("<strong>" + p.getName() + "</strong> was just added to your shopping cart! <br /><br />");
                         }
-
 
                         ArrayList<Product> all_recommend = sr.search(p.getCategory()); //not working right :(
                         if (all_recommend != null) {
@@ -63,16 +54,11 @@
                                     out.println("</tr></table>");
                                     return;
                                 }
-                                out.println("same");
 
                             }
                         } else {
                             out.println("recommend null");
                         }
-
-
-
-
                     %>  
                 </div>
             </div>

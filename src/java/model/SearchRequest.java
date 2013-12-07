@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package model;
 
 import java.sql.ResultSet;
@@ -11,13 +7,8 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 import model.db.DBQueryHandler;
 
-/**
- *
- * @author Student_User
- */
 public class SearchRequest {
 
-    //get cart method, get product info: name, price, image
     public ArrayList<Product> getProductTable() {
         String query = "SELECT * FROM Products";
         ArrayList<Product> result = new ArrayList<Product>();
@@ -51,7 +42,6 @@ public class SearchRequest {
     public ArrayList<Product> search(String searchterms) {
         ArrayList<Product> result = new ArrayList<Product>();
 
-        //Check if searchTerms contains only letters or a hyphen
         if (searchterms.compareTo("All") == 0) {
             return getProductTable();
         } else {
@@ -82,7 +72,7 @@ public class SearchRequest {
             }
         }
         return result;
-    }//search
+    }
 
     public Product productInfo(int input) {
 

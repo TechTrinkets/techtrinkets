@@ -1,8 +1,3 @@
-<%-- 
-    Document   : register
-    Created on : Nov 19, 2013, 12:24:18 PM
-    Author     : Student_User
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -12,136 +7,133 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        
+
         <script type="text/javascript">
-                function validate() {
-        
-        var valid = true
+            function validate() {
 
-        // validate first name
-        var firstname = get('firstname').value
-        get('firstnameFlag').innerHTML = ''
-        if (! /^[a-zA-Z]+$/.test(firstname)) {
-          valid = false
-          get('firstnameFlag').innerHTML = 'First name can contain only a-z and A-Z.'
-        }
-        
-        
+                var valid = true
 
-        //validate last name
-        var lastname = get('lastname').value;
-        get('lastnameFlag').innerHTML = '';
-        if (! /^[ \-a-zA-Z]+$/.test(lastname)) {
-            valid = false;
-            get('lastnameFlag').innerHTML = 'Last name can contain only a-z and  A-Z.'
-        }
-        
-        // validate userid
-        var userid = get('username').value
-        get('usernameFlag').innerHTML = ''
-        if (! /^[a-zA-Z0-9]+$/.test(userid)) {
-          valid = false
-          get('usernameFlag').innerHTML = 'Userid can contain only a-z, A-Z, and 0-9.'
-        }
-        
-        //validate email
-        var email1 = get('email').value;
-        get('emailFlag').innerHTML = '';
-        if (! /^[a-zA-Z0-9@.]+$/.test(email1)) {
-            valid = false;
-            get('emailFlag').innerHTML = 'Email can contain only a-z, A-Z, 0-9, period, and @.';
-        }
-        
-        
-        //validate email2
-        var email2 = get('confirmemail').value;
-        get('confirmemailFlag').innerHTML = '';
-        if (! /^[a-zA-Z0-9@.]+$/.test(email2)) {
-            valid = false;
-            get('confirmemailFlag').innerHTML = 'Email can contain only a-z, A-Z, 0-9, period, and @.';
-        }
-        else if( email1 !== email2)
-        {
-            valid = false;
-            get('confirmemailFlag').innerHTML = get('confirmemailFlag').innerHTML + ' Email1 must match email2.';
-        }
-        
-        //validate phone
-        var phone = get('phonenumber').value;
-        get('phonenumberFlag').innerHTML = '';
-        if (! /^[ \-0-9]+$/.test(phone)) {
-            valid = false;
-            get('phonenumberFlag').innerHTML = 'Phone number can contain only 0-9, space, and hyphen.';
-        }
-                
-        //validate street
-        var streetadd = get('streetadd').value;
-        get('streetaddFlag').innerHTML = '';
-        if (! /^[ a-zA-Z0-9]+$/.test(streetadd)) {
-            valid = false;
-            get('streetaddFlag').innerHTML = 'Street address can contain only a-z, A-Z, space, and 0-9.';
-        }
-        
-        //validate city
-        var city = get('city').value;
-        get('cityFlag').innerHTML = '';
-        if (! /^[ \-a-zA-Z]+$/.test(city)) {
-            valid = false;
-            get('cityFlag').innerHTML = 'City can contain only a-z and  A-Z.'
-        }
-        
-        // validate zipcode
-        var zipcode = get('zipcode').value
-        get('zipcodeFlag').innerHTML = ''
-        if (! /^[0-9]+$/.test(zipcode)) {
-          valid = false
-          get('zipcodeFlag').innerHTML = 'Zipcode can contain only 0-9.'
-        }
-        
-        
-        //validate pwd
-        var pwd = get('pwd').value;
-        get('pwdFlag').innerHTML = '';
-        if (! /^[a-zA-Z0-9\-]+$/.test(pwd)) {
-            valid = false;
-            get('pwdFlag').innerHTML = 'Password can contain only a-z, A-Z, 0-9, and hyphen.';
-        }
-        
-        //validate pwd
-        var pwd2 = get('confirmpwd').value;
-        get('confirmpwdFlag').innerHTML = '';
-        if (! /^[a-zA-Z0-9\-]+$/.test(pwd2)) {
-            valid = false;
-            get('confirmpwdFlag').innerHTML = 'Password can contain only a-z, A-Z, 0-9, and hyphen.';
-        }
-        else if (pwd !== pwd2) {
-            valid = false;
-            get('confirmpwdFlag').innerHTML = get('confirmpwdFlag').innerHTML + 'Passwords must match.';
-        }
-        
-        //validate question
-        var question = get('question').value;
-        get('questionFlag').innerHTML = '';
-        if (! /^[ a-zA-Z0-9\-?]+$/.test(question)) {
-            valid = false;
-            get('questionFlag').innerHTML = 'Security question can contain only a-z, A-Z, 0-9, hyphen, space, and question mark.';
-        }
-        
-        //validate answer
-        var answer = get('answer').value;
-        get('answerFlag').innerHTML = '';
-        if (! /^[ a-zA-Z0-9\-]+$/.test(answer)) {
-            valid = false;
-            get('answerFlag').innerHTML = 'Security answer can contain only a-z, A-Z, 0-9, space, and hyphen.';
-        }
-        
-        return valid;      
-                    
+                // validate first name
+                var firstname = get('firstname').value
+                get('firstnameFlag').innerHTML = ''
+                if (!/^[a-zA-Z]+$/.test(firstname)) {
+                    valid = false
+                    get('firstnameFlag').innerHTML = 'First name can contain only a-z and A-Z.'
                 }
-                
-                function get(id) {
-                    return document.getElementById(id);
+
+                //validate last name
+                var lastname = get('lastname').value;
+                get('lastnameFlag').innerHTML = '';
+                if (!/^[ \-a-zA-Z]+$/.test(lastname)) {
+                    valid = false;
+                    get('lastnameFlag').innerHTML = 'Last name can contain only a-z and  A-Z.'
                 }
+
+                // validate userid
+                var userid = get('username').value
+                get('usernameFlag').innerHTML = ''
+                if (!/^[a-zA-Z0-9]+$/.test(userid)) {
+                    valid = false
+                    get('usernameFlag').innerHTML = 'Userid can contain only a-z, A-Z, and 0-9.'
+                }
+
+                //validate email
+                var email1 = get('email').value;
+                get('emailFlag').innerHTML = '';
+                if (!/^[a-zA-Z0-9@.]+$/.test(email1)) {
+                    valid = false;
+                    get('emailFlag').innerHTML = 'Email can contain only a-z, A-Z, 0-9, period, and @.';
+                }
+
+                //validate email2
+                var email2 = get('confirmemail').value;
+                get('confirmemailFlag').innerHTML = '';
+                if (!/^[a-zA-Z0-9@.]+$/.test(email2)) {
+                    valid = false;
+                    get('confirmemailFlag').innerHTML = 'Email can contain only a-z, A-Z, 0-9, period, and @.';
+                }
+                else if (email1 !== email2)
+                {
+                    valid = false;
+                    get('confirmemailFlag').innerHTML = get('confirmemailFlag').innerHTML + ' Email1 must match email2.';
+                }
+
+                //validate phone
+                var phone = get('phonenumber').value;
+                get('phonenumberFlag').innerHTML = '';
+                if (!/^[ \-0-9]+$/.test(phone)) {
+                    valid = false;
+                    get('phonenumberFlag').innerHTML = 'Phone number can contain only 0-9, space, and hyphen.';
+                }
+
+                //validate street
+                var streetadd = get('streetadd').value;
+                get('streetaddFlag').innerHTML = '';
+                if (!/^[ a-zA-Z0-9]+$/.test(streetadd)) {
+                    valid = false;
+                    get('streetaddFlag').innerHTML = 'Street address can contain only a-z, A-Z, space, and 0-9.';
+                }
+
+                //validate city
+                var city = get('city').value;
+                get('cityFlag').innerHTML = '';
+                if (!/^[ \-a-zA-Z]+$/.test(city)) {
+                    valid = false;
+                    get('cityFlag').innerHTML = 'City can contain only a-z and  A-Z.'
+                }
+
+                // validate zipcode
+                var zipcode = get('zipcode').value
+                get('zipcodeFlag').innerHTML = ''
+                if (!/^[0-9]+$/.test(zipcode)) {
+                    valid = false
+                    get('zipcodeFlag').innerHTML = 'Zipcode can contain only 0-9.'
+                }
+
+
+                //validate pwd
+                var pwd = get('pwd').value;
+                get('pwdFlag').innerHTML = '';
+                if (!/^[a-zA-Z0-9\-]+$/.test(pwd)) {
+                    valid = false;
+                    get('pwdFlag').innerHTML = 'Password can contain only a-z, A-Z, 0-9, and hyphen.';
+                }
+
+                //validate pwd
+                var pwd2 = get('confirmpwd').value;
+                get('confirmpwdFlag').innerHTML = '';
+                if (!/^[a-zA-Z0-9\-]+$/.test(pwd2)) {
+                    valid = false;
+                    get('confirmpwdFlag').innerHTML = 'Password can contain only a-z, A-Z, 0-9, and hyphen.';
+                }
+                else if (pwd !== pwd2) {
+                    valid = false;
+                    get('confirmpwdFlag').innerHTML = get('confirmpwdFlag').innerHTML + 'Passwords must match.';
+                }
+
+                //validate question
+                var question = get('question').value;
+                get('questionFlag').innerHTML = '';
+                if (!/^[ a-zA-Z0-9\-?]+$/.test(question)) {
+                    valid = false;
+                    get('questionFlag').innerHTML = 'Security question can contain only a-z, A-Z, 0-9, hyphen, space, and question mark.';
+                }
+
+                //validate answer
+                var answer = get('answer').value;
+                get('answerFlag').innerHTML = '';
+                if (!/^[ a-zA-Z0-9\-]+$/.test(answer)) {
+                    valid = false;
+                    get('answerFlag').innerHTML = 'Security answer can contain only a-z, A-Z, 0-9, space, and hyphen.';
+                }
+
+                return valid;
+
+            }
+
+            function get(id) {
+                return document.getElementById(id);
+            }
         </script>
 
         <title>Create an Account</title>
@@ -154,10 +146,8 @@
             <%@include file="header.jsp" %>
 
             <div id="content">
-                <h1>Register Here:</h1>
-                
-                
-                
+                <h2>Register Here:</h2>
+
                 <form id="form2" action="controller?action=register" onsubmit="return validate()" method="post">
 
                     <p>First Name: <input type="text" name="firstname" id="firstname" > <span id="firstnameFlag" class="flag"></span></p>
@@ -228,16 +218,13 @@
                         </select> </p>
 
                     <p>Zip Code: <input type="text" name="zipcode" id="zipcode"> <span id="zipcodeFlag" class="flag"></span> </p>
-
                     <p>Password: <input type="password" name="pwd" id="pwd"> <span id="pwdFlag" class="flag"></span></p>
                     <p>Confirm Password: <input type="password" name="confirmpwd" id="confirmpwd"> <span id="confirmpwdFlag" class="flag"></span></p>
                     <p>Secret Question: <input type="text" name="question" id="question"> <span id="questionFlag" class="flag"></span></p>
                     <p>Secret Answer: <input type="text" name="answer" id="answer"> <span id="answerFlag" class="flag"></span></p>
-
                     <p><input type="submit" value="Register" name="action"></span></p>
                 </form>
             </div>
-
 
             <%@include file="footer.jsp" %>
 
