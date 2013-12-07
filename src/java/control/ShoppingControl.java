@@ -121,8 +121,6 @@ public class ShoppingControl extends HttpServlet {
                     session.setAttribute("cartitems", newItem);
                 }
                 forwardRequest(request, response, "/recommend.jsp");
-
-
             } else if (request.getParameter("action").equals("checkout")) {
                 forwardRequest(request, response, "/billing.jsp");
             } else if (request.getParameter("action").equals("billing")) {
@@ -144,7 +142,7 @@ public class ShoppingControl extends HttpServlet {
                     session.setAttribute("loggedin", true);
                     session.setAttribute("userid", request.getParameter("usernameforgot"));
 
-                    forwardRequest(request, response, "index.jsp");
+                    forwardRequest(request, response, "/index.jsp");
                 } else {
                     request.setAttribute("answererror", "Incorrect security answer.");
                     forwardRequest(request, response, "/forgotpassword.jsp");

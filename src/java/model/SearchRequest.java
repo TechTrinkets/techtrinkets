@@ -44,7 +44,7 @@ public class SearchRequest {
 
         if (searchterms.compareTo("All") == 0) {
             return getProductTable();
-        } else {
+        } else if(Pattern.matches("^[a-zA-Z]+$", searchterms)){
             String query = "SELECT * FROM Products WHERE name LIKE '%"
                     + searchterms + "%' OR category LIKE '%"
                     + searchterms + "%';";
