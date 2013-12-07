@@ -30,7 +30,6 @@
             {
                 out.println("<p>" +request.getParameter("answererror") + "</p>");
             }
-            
                 if(request.getParameter("usernameforgot") != null)
                 {
                     String username = request.getParameter("usernameforgot");
